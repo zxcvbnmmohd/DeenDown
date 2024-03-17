@@ -1,0 +1,15 @@
+{
+	"dev": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-deendown-dev-145459-authRole",
+			"UnauthRoleArn": "arn:aws:iam::690314499321:role/amplify-deendown-dev-145459-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::690314499321:role/amplify-deendown-dev-145459-authRole",
+			"Region": "ca-central-1",
+			"DeploymentBucketName": "amplify-deendown-dev-145459-deployment",
+			"UnauthRoleName": "amplify-deendown-dev-145459-unauthRole",
+			"StackName": "amplify-deendown-dev-145459",
+			"StackId": "arn:aws:cloudformation:ca-central-1:690314499321:stack/amplify-deendown-dev-145459/54d736f0-e46e-11ee-bc25-02883c127241",
+			"AmplifyAppId": "d142s443tjgton"
+		}
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"name": "@deenup/backend",
+	"private": true,
+	"engines": {
+		"node": ">=20.11.0"
+	},
+	"packageManager": "pnpm@8.15.4",
+	"scripts": {
+		"lint": "eslint",
+		"format": "prettier --check .",
+		"format:fix": "prettier --write .",
+		"typecheck": "tsc --noEmit",
+		"postinstall": "pnpm lint:ws",
+		"prepare": "husky"
+	},
+	"devDependencies": {
+		"@deenup/eslint-config": "https://gitpkg.now.sh/zxcvbnmmohd/DeenUp/tooling/eslint?production",
+		"@deenup/prettier-config": "https://gitpkg.now.sh/zxcvbnmmohd/DeenUp/tooling/prettier?production",
+		"@deenup/tsconfig": "https://gitpkg.now.sh/zxcvbnmmohd/DeenUp/tooling/typescript?production",
+		"enforce-branch-name": "^1.1.2",
+		"eslint": "^8.57.0",
+		"husky": "^9.0.11",
+		"lint-staged": "^15.2.2",
+		"prettier": "^3.2.5",
+		"typescript": "^5.3.3"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.*": [
+			"pnpm format:fix"
+		]
+	},
+	"eslintConfig": {
+		"root": true,
+		"extends": [
+			"@deenup/eslint-config/base"
+		]
+	},
+	"prettier": "@deenup/prettier-config"
+}
