@@ -1,0 +1,14 @@
+{
+	"recommendations": [
+		"aws-amplify.aws-amplify-console", // AWS Amplify Console
+		"amazonwebservices.aws-toolkit-vscode", // AWS Toolkit for Visual Studio Code
+		"mauve.terraform", // Terraform
+		"ms-azuretools.vscode-docker", // Docker
+		"dbaeumer.vscode-eslint", // ESLint
+		"esbenp.prettier-vscode", // Prettier - Code formatter
+		"editorconfig.editorconfig", // EditorConfig for VS Code
+		"coenraads.bracket-pair-colorizer", // Bracket Pair Colorizer
+		"naumovs.color-highlight", // Color Highlight
+		"pkief.material-icon-theme" // Material Icon Theme
+	]
+}
