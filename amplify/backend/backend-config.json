@@ -152,6 +152,18 @@
 		},
 		"DeenDownAuthPostConfirmation": {
 			"build": true,
+			"dependsOn": [
+				{
+					"attributes": ["Arn"],
+					"category": "function",
+					"resourceName": "deendownCommonLayerTs"
+				},
+				{
+					"attributes": ["GraphQLAPIIdOutput"],
+					"category": "api",
+					"resourceName": "DeenDownAPI"
+				}
+			],
 			"providerPlugin": "awscloudformation",
 			"service": "Lambda"
 		},

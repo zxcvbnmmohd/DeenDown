@@ -767,64 +767,6 @@ export const onDeleteLobby =
 		APITypes.OnDeleteLobbySubscriptionVariables,
 		APITypes.OnDeleteLobbySubscription
 	>
-export const onCreateUser =
-	/* GraphQL */ `subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
-  onCreateUser(filter: $filter) {
-    id
-    email
-    name
-    selfie
-    status
-    type
-    createdLobbies {
-      items {
-        id
-        code
-        isActive
-        creatorID
-        gameSessionID
-        updatedAt
-        createdAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    joinedLobbies {
-      items {
-        id
-        lobbyId
-        userId
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    submittedAnswers {
-      items {
-        id
-        answer
-        isCorrect
-        userID
-        gameRoundID
-        updatedAt
-        createdAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    updatedAt
-    createdAt
-    __typename
-  }
-}
-` as GeneratedSubscription<
-		APITypes.OnCreateUserSubscriptionVariables,
-		APITypes.OnCreateUserSubscription
-	>
 export const onUpdateUser =
 	/* GraphQL */ `subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
   onUpdateUser(filter: $filter) {
@@ -882,64 +824,6 @@ export const onUpdateUser =
 ` as GeneratedSubscription<
 		APITypes.OnUpdateUserSubscriptionVariables,
 		APITypes.OnUpdateUserSubscription
-	>
-export const onDeleteUser =
-	/* GraphQL */ `subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
-  onDeleteUser(filter: $filter) {
-    id
-    email
-    name
-    selfie
-    status
-    type
-    createdLobbies {
-      items {
-        id
-        code
-        isActive
-        creatorID
-        gameSessionID
-        updatedAt
-        createdAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    joinedLobbies {
-      items {
-        id
-        lobbyId
-        userId
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    submittedAnswers {
-      items {
-        id
-        answer
-        isCorrect
-        userID
-        gameRoundID
-        updatedAt
-        createdAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    updatedAt
-    createdAt
-    __typename
-  }
-}
-` as GeneratedSubscription<
-		APITypes.OnDeleteUserSubscriptionVariables,
-		APITypes.OnDeleteUserSubscription
 	>
 export const onCreateLobbiesJoined =
 	/* GraphQL */ `subscription OnCreateLobbiesJoined(

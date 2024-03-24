@@ -35,7 +35,7 @@
 				"DeenDownAuthPostConfirmation": {
 					"GROUP": "Players",
 					"deploymentBucketName": "amplify-deendown-dev-145459-deployment",
-					"s3Key": "amplify-builds/DeenDownAuthPostConfirmation-4e5037733578684b6b34-build.zip"
+					"s3Key": "amplify-builds/DeenDownAuthPostConfirmation-334975682b32496a4f54-build.zip"
 				},
 				"DeenDownAuthPreAuthentication": {
 					"deploymentBucketName": "amplify-deendown-dev-145459-deployment",
@@ -53,7 +53,7 @@
 				},
 				"deendownCommonLayerTs": {
 					"deploymentBucketName": "amplify-deendown-dev-145459-deployment",
-					"s3Key": "amplify-builds/deendownCommonLayerTs-LambdaLayerVersion99f6e428-build.zip"
+					"s3Key": "amplify-builds/deendownCommonLayerTs-LambdaLayerVersionb2f534d4-build.zip"
 				}
 			},
 			"api": {

@@ -20,6 +20,59 @@
 		}
 	},
 	"Resources": {
+		"LambdaLayerVersionb2f534d4": {
+			"Type": "AWS::Lambda::LayerVersion",
+			"Properties": {
+				"CompatibleRuntimes": {
+					"Ref": "runtimes"
+				},
+				"Content": {
+					"S3Bucket": {
+						"Ref": "deploymentBucketName"
+					},
+					"S3Key": {
+						"Ref": "s3Key"
+					}
+				},
+				"Description": {
+					"Ref": "description"
+				},
+				"LayerName": {
+					"Fn::Sub": [
+						"deendownCommonLayerTs-${env}",
+						{
+							"env": {
+								"Ref": "env"
+							}
+						}
+					]
+				}
+			},
+			"DeletionPolicy": "Delete",
+			"UpdateReplacePolicy": "Retain"
+		},
+		"LambdaLayerPermissionAwsAccounts690314499321b2f534d4": {
+			"Type": "AWS::Lambda::LayerVersionPermission",
+			"Properties": {
+				"Action": "lambda:GetLayerVersion",
+				"LayerVersionArn": {
+					"Ref": "LambdaLayerVersionb2f534d4"
+				},
+				"Principal": "690314499321"
+			}
+		},
+		"LambdaLayerPermissionPrivateb2f534d4": {
+			"Type": "AWS::Lambda::LayerVersionPermission",
+			"Properties": {
+				"Action": "lambda:GetLayerVersion",
+				"LayerVersionArn": {
+					"Ref": "LambdaLayerVersionb2f534d4"
+				},
+				"Principal": {
+					"Ref": "AWS::AccountId"
+				}
+			}
+		},
 		"LambdaLayerVersion99f6e428": {
 			"Type": "AWS::Lambda::LayerVersion",
 			"Properties": {
@@ -67,7 +120,7 @@
 	"Outputs": {
 		"Arn": {
 			"Value": {
-				"Ref": "LambdaLayerVersion99f6e428"
+				"Ref": "LambdaLayerVersionb2f534d4"
 			}
 		}
 	}
