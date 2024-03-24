@@ -8,315 +8,1173 @@ type GeneratedMutation<InputType, OutputType> = string & {
 	__generatedMutationOutput: OutputType
 }
 
-export const createBlog = /* GraphQL */ `mutation CreateBlog(
-  $input: CreateBlogInput!
-  $condition: ModelBlogConditionInput
+export const createGameRound = /* GraphQL */ `mutation CreateGameRound(
+  $input: CreateGameRoundInput!
+  $condition: ModelGameRoundConditionInput
 ) {
-  createBlog(input: $input, condition: $condition) {
+  createGameRound(input: $input, condition: $condition) {
     id
-    name
-    posts {
+    index
+    question
+    correctAnswer
+    isComplete
+    submittedAnswers {
       items {
         id
-        title
-        createdAt
+        answer
+        isCorrect
+        userID
+        gameRoundID
         updatedAt
-        blogPostsId
+        createdAt
         __typename
       }
       nextToken
       __typename
     }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-` as GeneratedMutation<
-	APITypes.CreateBlogMutationVariables,
-	APITypes.CreateBlogMutation
->
-export const updateBlog = /* GraphQL */ `mutation UpdateBlog(
-  $input: UpdateBlogInput!
-  $condition: ModelBlogConditionInput
-) {
-  updateBlog(input: $input, condition: $condition) {
-    id
-    name
-    posts {
-      items {
-        id
-        title
-        createdAt
-        updatedAt
-        blogPostsId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-` as GeneratedMutation<
-	APITypes.UpdateBlogMutationVariables,
-	APITypes.UpdateBlogMutation
->
-export const deleteBlog = /* GraphQL */ `mutation DeleteBlog(
-  $input: DeleteBlogInput!
-  $condition: ModelBlogConditionInput
-) {
-  deleteBlog(input: $input, condition: $condition) {
-    id
-    name
-    posts {
-      items {
-        id
-        title
-        createdAt
-        updatedAt
-        blogPostsId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-` as GeneratedMutation<
-	APITypes.DeleteBlogMutationVariables,
-	APITypes.DeleteBlogMutation
->
-export const createPost = /* GraphQL */ `mutation CreatePost(
-  $input: CreatePostInput!
-  $condition: ModelPostConditionInput
-) {
-  createPost(input: $input, condition: $condition) {
-    id
-    title
-    blog {
+    gameSessionID
+    gameSession {
       id
+      lobbyID
+      lobby {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      rounds {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+	APITypes.CreateGameRoundMutationVariables,
+	APITypes.CreateGameRoundMutation
+>
+export const updateGameRound = /* GraphQL */ `mutation UpdateGameRound(
+  $input: UpdateGameRoundInput!
+  $condition: ModelGameRoundConditionInput
+) {
+  updateGameRound(input: $input, condition: $condition) {
+    id
+    index
+    question
+    correctAnswer
+    isComplete
+    submittedAnswers {
+      items {
+        id
+        answer
+        isCorrect
+        userID
+        gameRoundID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    gameSessionID
+    gameSession {
+      id
+      lobbyID
+      lobby {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      rounds {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+	APITypes.UpdateGameRoundMutationVariables,
+	APITypes.UpdateGameRoundMutation
+>
+export const deleteGameRound = /* GraphQL */ `mutation DeleteGameRound(
+  $input: DeleteGameRoundInput!
+  $condition: ModelGameRoundConditionInput
+) {
+  deleteGameRound(input: $input, condition: $condition) {
+    id
+    index
+    question
+    correctAnswer
+    isComplete
+    submittedAnswers {
+      items {
+        id
+        answer
+        isCorrect
+        userID
+        gameRoundID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    gameSessionID
+    gameSession {
+      id
+      lobbyID
+      lobby {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      rounds {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+	APITypes.DeleteGameRoundMutationVariables,
+	APITypes.DeleteGameRoundMutation
+>
+export const createSubmittedAnswer =
+	/* GraphQL */ `mutation CreateSubmittedAnswer(
+  $input: CreateSubmittedAnswerInput!
+  $condition: ModelSubmittedAnswerConditionInput
+) {
+  createSubmittedAnswer(input: $input, condition: $condition) {
+    id
+    answer
+    isCorrect
+    userID
+    user {
+      id
+      email
       name
-      posts {
+      selfie
+      status
+      type
+      createdLobbies {
         nextToken
         __typename
       }
-      createdAt
-      updatedAt
-      __typename
-    }
-    comments {
-      items {
-        id
-        content
-        createdAt
-        updatedAt
-        postCommentsId
+      joinedLobbies {
+        nextToken
         __typename
       }
-      nextToken
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
       __typename
     }
-    createdAt
+    gameRoundID
+    gameRound {
+      id
+      index
+      question
+      correctAnswer
+      isComplete
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
     updatedAt
-    blogPostsId
+    createdAt
     __typename
   }
 }
 ` as GeneratedMutation<
-	APITypes.CreatePostMutationVariables,
-	APITypes.CreatePostMutation
->
-export const updatePost = /* GraphQL */ `mutation UpdatePost(
-  $input: UpdatePostInput!
-  $condition: ModelPostConditionInput
+		APITypes.CreateSubmittedAnswerMutationVariables,
+		APITypes.CreateSubmittedAnswerMutation
+	>
+export const updateSubmittedAnswer =
+	/* GraphQL */ `mutation UpdateSubmittedAnswer(
+  $input: UpdateSubmittedAnswerInput!
+  $condition: ModelSubmittedAnswerConditionInput
 ) {
-  updatePost(input: $input, condition: $condition) {
+  updateSubmittedAnswer(input: $input, condition: $condition) {
     id
-    title
-    blog {
+    answer
+    isCorrect
+    userID
+    user {
       id
+      email
       name
-      posts {
+      selfie
+      status
+      type
+      createdLobbies {
         nextToken
         __typename
       }
-      createdAt
-      updatedAt
-      __typename
-    }
-    comments {
-      items {
-        id
-        content
-        createdAt
-        updatedAt
-        postCommentsId
+      joinedLobbies {
+        nextToken
         __typename
       }
-      nextToken
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
       __typename
     }
-    createdAt
+    gameRoundID
+    gameRound {
+      id
+      index
+      question
+      correctAnswer
+      isComplete
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
     updatedAt
-    blogPostsId
+    createdAt
     __typename
   }
 }
 ` as GeneratedMutation<
-	APITypes.UpdatePostMutationVariables,
-	APITypes.UpdatePostMutation
->
-export const deletePost = /* GraphQL */ `mutation DeletePost(
-  $input: DeletePostInput!
-  $condition: ModelPostConditionInput
+		APITypes.UpdateSubmittedAnswerMutationVariables,
+		APITypes.UpdateSubmittedAnswerMutation
+	>
+export const deleteSubmittedAnswer =
+	/* GraphQL */ `mutation DeleteSubmittedAnswer(
+  $input: DeleteSubmittedAnswerInput!
+  $condition: ModelSubmittedAnswerConditionInput
 ) {
-  deletePost(input: $input, condition: $condition) {
+  deleteSubmittedAnswer(input: $input, condition: $condition) {
     id
-    title
-    blog {
+    answer
+    isCorrect
+    userID
+    user {
       id
+      email
       name
-      posts {
+      selfie
+      status
+      type
+      createdLobbies {
         nextToken
         __typename
       }
-      createdAt
+      joinedLobbies {
+        nextToken
+        __typename
+      }
+      submittedAnswers {
+        nextToken
+        __typename
+      }
       updatedAt
+      createdAt
       __typename
     }
-    comments {
+    gameRoundID
+    gameRound {
+      id
+      index
+      question
+      correctAnswer
+      isComplete
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+		APITypes.DeleteSubmittedAnswerMutationVariables,
+		APITypes.DeleteSubmittedAnswerMutation
+	>
+export const createGameSession = /* GraphQL */ `mutation CreateGameSession(
+  $input: CreateGameSessionInput!
+  $condition: ModelGameSessionConditionInput
+) {
+  createGameSession(input: $input, condition: $condition) {
+    id
+    lobbyID
+    lobby {
+      id
+      code
+      isActive
+      participants {
+        nextToken
+        __typename
+      }
+      creatorID
+      creator {
+        id
+        email
+        name
+        selfie
+        status
+        type
+        updatedAt
+        createdAt
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    rounds {
       items {
         id
-        content
-        createdAt
+        index
+        question
+        correctAnswer
+        isComplete
+        gameSessionID
         updatedAt
-        postCommentsId
+        createdAt
         __typename
       }
       nextToken
       __typename
     }
-    createdAt
     updatedAt
-    blogPostsId
+    createdAt
     __typename
   }
 }
 ` as GeneratedMutation<
-	APITypes.DeletePostMutationVariables,
-	APITypes.DeletePostMutation
+	APITypes.CreateGameSessionMutationVariables,
+	APITypes.CreateGameSessionMutation
 >
-export const createComment = /* GraphQL */ `mutation CreateComment(
-  $input: CreateCommentInput!
-  $condition: ModelCommentConditionInput
+export const updateGameSession = /* GraphQL */ `mutation UpdateGameSession(
+  $input: UpdateGameSessionInput!
+  $condition: ModelGameSessionConditionInput
 ) {
-  createComment(input: $input, condition: $condition) {
+  updateGameSession(input: $input, condition: $condition) {
     id
-    post {
+    lobbyID
+    lobby {
       id
-      title
-      blog {
+      code
+      isActive
+      participants {
+        nextToken
+        __typename
+      }
+      creatorID
+      creator {
         id
+        email
         name
+        selfie
+        status
+        type
+        updatedAt
+        createdAt
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    rounds {
+      items {
+        id
+        index
+        question
+        correctAnswer
+        isComplete
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+	APITypes.UpdateGameSessionMutationVariables,
+	APITypes.UpdateGameSessionMutation
+>
+export const deleteGameSession = /* GraphQL */ `mutation DeleteGameSession(
+  $input: DeleteGameSessionInput!
+  $condition: ModelGameSessionConditionInput
+) {
+  deleteGameSession(input: $input, condition: $condition) {
+    id
+    lobbyID
+    lobby {
+      id
+      code
+      isActive
+      participants {
+        nextToken
+        __typename
+      }
+      creatorID
+      creator {
+        id
+        email
+        name
+        selfie
+        status
+        type
+        updatedAt
+        createdAt
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    rounds {
+      items {
+        id
+        index
+        question
+        correctAnswer
+        isComplete
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+	APITypes.DeleteGameSessionMutationVariables,
+	APITypes.DeleteGameSessionMutation
+>
+export const createLobby = /* GraphQL */ `mutation CreateLobby(
+  $input: CreateLobbyInput!
+  $condition: ModelLobbyConditionInput
+) {
+  createLobby(input: $input, condition: $condition) {
+    id
+    code
+    isActive
+    participants {
+      items {
+        id
+        lobbyId
+        userId
         createdAt
         updatedAt
         __typename
       }
-      comments {
+      nextToken
+      __typename
+    }
+    creatorID
+    creator {
+      id
+      email
+      name
+      selfie
+      status
+      type
+      createdLobbies {
         nextToken
         __typename
       }
-      createdAt
+      joinedLobbies {
+        nextToken
+        __typename
+      }
+      submittedAnswers {
+        nextToken
+        __typename
+      }
       updatedAt
-      blogPostsId
+      createdAt
       __typename
     }
-    content
-    createdAt
+    gameSessionID
+    gameSession {
+      id
+      lobbyID
+      lobby {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      rounds {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
     updatedAt
-    postCommentsId
+    createdAt
     __typename
   }
 }
 ` as GeneratedMutation<
-	APITypes.CreateCommentMutationVariables,
-	APITypes.CreateCommentMutation
+	APITypes.CreateLobbyMutationVariables,
+	APITypes.CreateLobbyMutation
 >
-export const updateComment = /* GraphQL */ `mutation UpdateComment(
-  $input: UpdateCommentInput!
-  $condition: ModelCommentConditionInput
+export const updateLobby = /* GraphQL */ `mutation UpdateLobby(
+  $input: UpdateLobbyInput!
+  $condition: ModelLobbyConditionInput
 ) {
-  updateComment(input: $input, condition: $condition) {
+  updateLobby(input: $input, condition: $condition) {
     id
-    post {
-      id
-      title
-      blog {
+    code
+    isActive
+    participants {
+      items {
         id
-        name
+        lobbyId
+        userId
         createdAt
         updatedAt
         __typename
       }
-      comments {
+      nextToken
+      __typename
+    }
+    creatorID
+    creator {
+      id
+      email
+      name
+      selfie
+      status
+      type
+      createdLobbies {
         nextToken
         __typename
       }
-      createdAt
+      joinedLobbies {
+        nextToken
+        __typename
+      }
+      submittedAnswers {
+        nextToken
+        __typename
+      }
       updatedAt
-      blogPostsId
+      createdAt
       __typename
     }
-    content
-    createdAt
+    gameSessionID
+    gameSession {
+      id
+      lobbyID
+      lobby {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      rounds {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
     updatedAt
-    postCommentsId
+    createdAt
     __typename
   }
 }
 ` as GeneratedMutation<
-	APITypes.UpdateCommentMutationVariables,
-	APITypes.UpdateCommentMutation
+	APITypes.UpdateLobbyMutationVariables,
+	APITypes.UpdateLobbyMutation
 >
-export const deleteComment = /* GraphQL */ `mutation DeleteComment(
-  $input: DeleteCommentInput!
-  $condition: ModelCommentConditionInput
+export const deleteLobby = /* GraphQL */ `mutation DeleteLobby(
+  $input: DeleteLobbyInput!
+  $condition: ModelLobbyConditionInput
 ) {
-  deleteComment(input: $input, condition: $condition) {
+  deleteLobby(input: $input, condition: $condition) {
     id
-    post {
-      id
-      title
-      blog {
+    code
+    isActive
+    participants {
+      items {
         id
-        name
+        lobbyId
+        userId
         createdAt
         updatedAt
         __typename
       }
-      comments {
+      nextToken
+      __typename
+    }
+    creatorID
+    creator {
+      id
+      email
+      name
+      selfie
+      status
+      type
+      createdLobbies {
         nextToken
         __typename
       }
-      createdAt
+      joinedLobbies {
+        nextToken
+        __typename
+      }
+      submittedAnswers {
+        nextToken
+        __typename
+      }
       updatedAt
-      blogPostsId
+      createdAt
       __typename
     }
-    content
-    createdAt
+    gameSessionID
+    gameSession {
+      id
+      lobbyID
+      lobby {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      rounds {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
     updatedAt
-    postCommentsId
+    createdAt
     __typename
   }
 }
 ` as GeneratedMutation<
-	APITypes.DeleteCommentMutationVariables,
-	APITypes.DeleteCommentMutation
+	APITypes.DeleteLobbyMutationVariables,
+	APITypes.DeleteLobbyMutation
+>
+export const createUser = /* GraphQL */ `mutation CreateUser(
+  $input: CreateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  createUser(input: $input, condition: $condition) {
+    id
+    email
+    name
+    selfie
+    status
+    type
+    createdLobbies {
+      items {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    joinedLobbies {
+      items {
+        id
+        lobbyId
+        userId
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    submittedAnswers {
+      items {
+        id
+        answer
+        isCorrect
+        userID
+        gameRoundID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+	APITypes.CreateUserMutationVariables,
+	APITypes.CreateUserMutation
+>
+export const updateUser = /* GraphQL */ `mutation UpdateUser(
+  $input: UpdateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  updateUser(input: $input, condition: $condition) {
+    id
+    email
+    name
+    selfie
+    status
+    type
+    createdLobbies {
+      items {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    joinedLobbies {
+      items {
+        id
+        lobbyId
+        userId
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    submittedAnswers {
+      items {
+        id
+        answer
+        isCorrect
+        userID
+        gameRoundID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+	APITypes.UpdateUserMutationVariables,
+	APITypes.UpdateUserMutation
+>
+export const deleteUser = /* GraphQL */ `mutation DeleteUser(
+  $input: DeleteUserInput!
+  $condition: ModelUserConditionInput
+) {
+  deleteUser(input: $input, condition: $condition) {
+    id
+    email
+    name
+    selfie
+    status
+    type
+    createdLobbies {
+      items {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    joinedLobbies {
+      items {
+        id
+        lobbyId
+        userId
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    submittedAnswers {
+      items {
+        id
+        answer
+        isCorrect
+        userID
+        gameRoundID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+	APITypes.DeleteUserMutationVariables,
+	APITypes.DeleteUserMutation
+>
+export const createLobbiesJoined = /* GraphQL */ `mutation CreateLobbiesJoined(
+  $input: CreateLobbiesJoinedInput!
+  $condition: ModelLobbiesJoinedConditionInput
+) {
+  createLobbiesJoined(input: $input, condition: $condition) {
+    id
+    lobbyId
+    userId
+    lobby {
+      id
+      code
+      isActive
+      participants {
+        nextToken
+        __typename
+      }
+      creatorID
+      creator {
+        id
+        email
+        name
+        selfie
+        status
+        type
+        updatedAt
+        createdAt
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    user {
+      id
+      email
+      name
+      selfie
+      status
+      type
+      createdLobbies {
+        nextToken
+        __typename
+      }
+      joinedLobbies {
+        nextToken
+        __typename
+      }
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+	APITypes.CreateLobbiesJoinedMutationVariables,
+	APITypes.CreateLobbiesJoinedMutation
+>
+export const updateLobbiesJoined = /* GraphQL */ `mutation UpdateLobbiesJoined(
+  $input: UpdateLobbiesJoinedInput!
+  $condition: ModelLobbiesJoinedConditionInput
+) {
+  updateLobbiesJoined(input: $input, condition: $condition) {
+    id
+    lobbyId
+    userId
+    lobby {
+      id
+      code
+      isActive
+      participants {
+        nextToken
+        __typename
+      }
+      creatorID
+      creator {
+        id
+        email
+        name
+        selfie
+        status
+        type
+        updatedAt
+        createdAt
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    user {
+      id
+      email
+      name
+      selfie
+      status
+      type
+      createdLobbies {
+        nextToken
+        __typename
+      }
+      joinedLobbies {
+        nextToken
+        __typename
+      }
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+	APITypes.UpdateLobbiesJoinedMutationVariables,
+	APITypes.UpdateLobbiesJoinedMutation
+>
+export const deleteLobbiesJoined = /* GraphQL */ `mutation DeleteLobbiesJoined(
+  $input: DeleteLobbiesJoinedInput!
+  $condition: ModelLobbiesJoinedConditionInput
+) {
+  deleteLobbiesJoined(input: $input, condition: $condition) {
+    id
+    lobbyId
+    userId
+    lobby {
+      id
+      code
+      isActive
+      participants {
+        nextToken
+        __typename
+      }
+      creatorID
+      creator {
+        id
+        email
+        name
+        selfie
+        status
+        type
+        updatedAt
+        createdAt
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    user {
+      id
+      email
+      name
+      selfie
+      status
+      type
+      createdLobbies {
+        nextToken
+        __typename
+      }
+      joinedLobbies {
+        nextToken
+        __typename
+      }
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+	APITypes.DeleteLobbiesJoinedMutationVariables,
+	APITypes.DeleteLobbiesJoinedMutation
 >
