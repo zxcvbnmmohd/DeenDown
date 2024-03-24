@@ -1,6 +1,6 @@
 {
 	"AWSTemplateFormatVersion": "2010-09-09",
-	"Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.10.1\",\"stackType\":\"function-LambdaLayer\",\"metadata\":{}}",
+	"Description": "Lambda layer resource stack creation using Amplify CLI",
 	"Parameters": {
 		"env": {
 			"Type": "String"
@@ -23,20 +23,14 @@
 		"LambdaLayerVersion99f6e428": {
 			"Type": "AWS::Lambda::LayerVersion",
 			"Properties": {
-				"CompatibleRuntimes": {
-					"Ref": "runtimes"
-				},
+				"CompatibleRuntimes": ["nodejs20.x"],
 				"Content": {
 					"S3Bucket": {
 						"Ref": "deploymentBucketName"
 					},
-					"S3Key": {
-						"Ref": "s3Key"
-					}
+					"S3Key": "amplify-builds/deendownCommonLayerTs-LambdaLayerVersion99f6e428-build.zip"
 				},
-				"Description": {
-					"Ref": "description"
-				},
+				"Description": "Updated layer version 2024-03-21T19:24:33.569Z",
 				"LayerName": {
 					"Fn::Sub": [
 						"deendownCommonLayerTs-${env}",
@@ -55,9 +49,7 @@
 			"Type": "AWS::Lambda::LayerVersionPermission",
 			"Properties": {
 				"Action": "lambda:GetLayerVersion",
-				"LayerVersionArn": {
-					"Ref": "LambdaLayerVersion99f6e428"
-				},
+				"LayerVersionArn": "arn:aws:lambda:ca-central-1:690314499321:layer:deendownCommonLayerTs-dev:1",
 				"Principal": "690314499321"
 			}
 		},
@@ -65,9 +57,7 @@
 			"Type": "AWS::Lambda::LayerVersionPermission",
 			"Properties": {
 				"Action": "lambda:GetLayerVersion",
-				"LayerVersionArn": {
-					"Ref": "LambdaLayerVersion99f6e428"
-				},
+				"LayerVersionArn": "arn:aws:lambda:ca-central-1:690314499321:layer:deendownCommonLayerTs-dev:1",
 				"Principal": {
 					"Ref": "AWS::AccountId"
 				}

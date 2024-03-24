@@ -2,16 +2,53 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateBlogInput = {
+export type CreateGameRoundInput = {
 	id?: string | null
-	name: string
+	index: number
+	question: string
+	correctAnswer: string
+	isComplete: boolean
+	gameSessionID: string
+	updatedAt?: string | null
+	createdAt?: string | null
 }
 
-export type ModelBlogConditionInput = {
-	name?: ModelStringInput | null
-	and?: Array<ModelBlogConditionInput | null> | null
-	or?: Array<ModelBlogConditionInput | null> | null
-	not?: ModelBlogConditionInput | null
+export type ModelGameRoundConditionInput = {
+	index?: ModelIntInput | null
+	question?: ModelStringInput | null
+	correctAnswer?: ModelStringInput | null
+	isComplete?: ModelBooleanInput | null
+	gameSessionID?: ModelIDInput | null
+	updatedAt?: ModelStringInput | null
+	createdAt?: ModelStringInput | null
+	and?: Array<ModelGameRoundConditionInput | null> | null
+	or?: Array<ModelGameRoundConditionInput | null> | null
+	not?: ModelGameRoundConditionInput | null
+}
+
+export type ModelIntInput = {
+	ne?: number | null
+	eq?: number | null
+	le?: number | null
+	lt?: number | null
+	ge?: number | null
+	gt?: number | null
+	between?: Array<number | null> | null
+	attributeExists?: boolean | null
+	attributeType?: ModelAttributeTypes | null
+}
+
+export enum ModelAttributeTypes {
+	binary = "binary",
+	binarySet = "binarySet",
+	bool = "bool",
+	list = "list",
+	map = "map",
+	number = "number",
+	numberSet = "numberSet",
+	string = "string",
+	stringSet = "stringSet",
+	_null = "_null",
 }
 
 export type ModelStringInput = {
@@ -30,19 +67,6 @@ export type ModelStringInput = {
 	size?: ModelSizeInput | null
 }
 
-export enum ModelAttributeTypes {
-	binary = "binary",
-	binarySet = "binarySet",
-	bool = "bool",
-	list = "list",
-	map = "map",
-	number = "number",
-	numberSet = "numberSet",
-	string = "string",
-	stringSet = "stringSet",
-	_null = "_null",
-}
-
 export type ModelSizeInput = {
 	ne?: number | null
 	eq?: number | null
@@ -53,69 +77,11 @@ export type ModelSizeInput = {
 	between?: Array<number | null> | null
 }
 
-export type Blog = {
-	__typename: "Blog"
-	id: string
-	name: string
-	posts?: ModelPostConnection | null
-	createdAt: string
-	updatedAt: string
-}
-
-export type ModelPostConnection = {
-	__typename: "ModelPostConnection"
-	items: Array<Post | null>
-	nextToken?: string | null
-}
-
-export type Post = {
-	__typename: "Post"
-	id: string
-	title: string
-	blog?: Blog | null
-	comments?: ModelCommentConnection | null
-	createdAt: string
-	updatedAt: string
-	blogPostsId?: string | null
-}
-
-export type ModelCommentConnection = {
-	__typename: "ModelCommentConnection"
-	items: Array<Comment | null>
-	nextToken?: string | null
-}
-
-export type Comment = {
-	__typename: "Comment"
-	id: string
-	post?: Post | null
-	content: string
-	createdAt: string
-	updatedAt: string
-	postCommentsId?: string | null
-}
-
-export type UpdateBlogInput = {
-	id: string
-	name?: string | null
-}
-
-export type DeleteBlogInput = {
-	id: string
-}
-
-export type CreatePostInput = {
-	id?: string | null
-	title: string
-	blogPostsId?: string | null
-}
-
-export type ModelPostConditionInput = {
-	title?: ModelStringInput | null
-	and?: Array<ModelPostConditionInput | null> | null
-	or?: Array<ModelPostConditionInput | null> | null
-	not?: ModelPostConditionInput | null
-	blogPostsId?: ModelIDInput | null
+export type ModelBooleanInput = {
+	ne?: boolean | null
+	eq?: boolean | null
+	attributeExists?: boolean | null
+	attributeType?: ModelAttributeTypes | null
 }
 
 export type ModelIDInput = {
@@ -134,77 +100,405 @@ export type ModelIDInput = {
 	size?: ModelSizeInput | null
 }
 
-export type UpdatePostInput = {
+export type GameRound = {
+	__typename: "GameRound"
 	id: string
-	title?: string | null
-	blogPostsId?: string | null
+	index: number
+	question: string
+	correctAnswer: string
+	isComplete: boolean
+	submittedAnswers?: ModelSubmittedAnswerConnection | null
+	gameSessionID: string
+	gameSession: GameSession
+	updatedAt: string
+	createdAt: string
 }
 
-export type DeletePostInput = {
-	id: string
-}
-
-export type CreateCommentInput = {
-	id?: string | null
-	content: string
-	postCommentsId?: string | null
-}
-
-export type ModelCommentConditionInput = {
-	content?: ModelStringInput | null
-	and?: Array<ModelCommentConditionInput | null> | null
-	or?: Array<ModelCommentConditionInput | null> | null
-	not?: ModelCommentConditionInput | null
-	postCommentsId?: ModelIDInput | null
-}
-
-export type UpdateCommentInput = {
-	id: string
-	content?: string | null
-	postCommentsId?: string | null
-}
-
-export type DeleteCommentInput = {
-	id: string
-}
-
-export type ModelBlogFilterInput = {
-	id?: ModelIDInput | null
-	name?: ModelStringInput | null
-	and?: Array<ModelBlogFilterInput | null> | null
-	or?: Array<ModelBlogFilterInput | null> | null
-	not?: ModelBlogFilterInput | null
-}
-
-export type ModelBlogConnection = {
-	__typename: "ModelBlogConnection"
-	items: Array<Blog | null>
+export type ModelSubmittedAnswerConnection = {
+	__typename: "ModelSubmittedAnswerConnection"
+	items: Array<SubmittedAnswer | null>
 	nextToken?: string | null
 }
 
-export type ModelPostFilterInput = {
-	id?: ModelIDInput | null
-	title?: ModelStringInput | null
-	and?: Array<ModelPostFilterInput | null> | null
-	or?: Array<ModelPostFilterInput | null> | null
-	not?: ModelPostFilterInput | null
-	blogPostsId?: ModelIDInput | null
+export type SubmittedAnswer = {
+	__typename: "SubmittedAnswer"
+	id: string
+	answer: string
+	isCorrect?: boolean | null
+	userID: string
+	user: User
+	gameRoundID: string
+	gameRound: GameRound
+	updatedAt: string
+	createdAt: string
 }
 
-export type ModelCommentFilterInput = {
-	id?: ModelIDInput | null
-	content?: ModelStringInput | null
-	and?: Array<ModelCommentFilterInput | null> | null
-	or?: Array<ModelCommentFilterInput | null> | null
-	not?: ModelCommentFilterInput | null
-	postCommentsId?: ModelIDInput | null
+export type User = {
+	__typename: "User"
+	id: string
+	email: string
+	name: string
+	selfie?: string | null
+	status: UserStatus
+	type: UserType
+	createdLobbies?: ModelLobbyConnection | null
+	joinedLobbies?: ModelLobbiesJoinedConnection | null
+	submittedAnswers?: ModelSubmittedAnswerConnection | null
+	updatedAt: string
+	createdAt: string
 }
 
-export type ModelSubscriptionBlogFilterInput = {
+export enum UserStatus {
+	ACTIVE = "ACTIVE",
+	SUSPENDED = "SUSPENDED",
+}
+
+export enum UserType {
+	ADMIN = "ADMIN",
+	PLAYER = "PLAYER",
+}
+
+export type ModelLobbyConnection = {
+	__typename: "ModelLobbyConnection"
+	items: Array<Lobby | null>
+	nextToken?: string | null
+}
+
+export type Lobby = {
+	__typename: "Lobby"
+	id: string
+	code: string
+	isActive: boolean
+	participants?: ModelLobbiesJoinedConnection | null
+	creatorID: string
+	creator: User
+	gameSessionID?: string | null
+	gameSession?: GameSession | null
+	updatedAt: string
+	createdAt: string
+}
+
+export type ModelLobbiesJoinedConnection = {
+	__typename: "ModelLobbiesJoinedConnection"
+	items: Array<LobbiesJoined | null>
+	nextToken?: string | null
+}
+
+export type LobbiesJoined = {
+	__typename: "LobbiesJoined"
+	id: string
+	lobbyId: string
+	userId: string
+	lobby: Lobby
+	user: User
+	createdAt: string
+	updatedAt: string
+}
+
+export type GameSession = {
+	__typename: "GameSession"
+	id: string
+	lobbyID: string
+	lobby: Lobby
+	rounds?: ModelGameRoundConnection | null
+	updatedAt: string
+	createdAt: string
+}
+
+export type ModelGameRoundConnection = {
+	__typename: "ModelGameRoundConnection"
+	items: Array<GameRound | null>
+	nextToken?: string | null
+}
+
+export type UpdateGameRoundInput = {
+	id: string
+	index?: number | null
+	question?: string | null
+	correctAnswer?: string | null
+	isComplete?: boolean | null
+	gameSessionID?: string | null
+	updatedAt?: string | null
+	createdAt?: string | null
+}
+
+export type DeleteGameRoundInput = {
+	id: string
+}
+
+export type CreateSubmittedAnswerInput = {
+	id?: string | null
+	answer: string
+	isCorrect?: boolean | null
+	userID: string
+	gameRoundID: string
+	updatedAt?: string | null
+	createdAt?: string | null
+}
+
+export type ModelSubmittedAnswerConditionInput = {
+	answer?: ModelStringInput | null
+	isCorrect?: ModelBooleanInput | null
+	userID?: ModelIDInput | null
+	gameRoundID?: ModelIDInput | null
+	updatedAt?: ModelStringInput | null
+	createdAt?: ModelStringInput | null
+	and?: Array<ModelSubmittedAnswerConditionInput | null> | null
+	or?: Array<ModelSubmittedAnswerConditionInput | null> | null
+	not?: ModelSubmittedAnswerConditionInput | null
+}
+
+export type UpdateSubmittedAnswerInput = {
+	id: string
+	answer?: string | null
+	isCorrect?: boolean | null
+	userID?: string | null
+	gameRoundID?: string | null
+	updatedAt?: string | null
+	createdAt?: string | null
+}
+
+export type DeleteSubmittedAnswerInput = {
+	id: string
+}
+
+export type CreateGameSessionInput = {
+	id?: string | null
+	lobbyID: string
+	updatedAt?: string | null
+	createdAt?: string | null
+}
+
+export type ModelGameSessionConditionInput = {
+	lobbyID?: ModelIDInput | null
+	updatedAt?: ModelStringInput | null
+	createdAt?: ModelStringInput | null
+	and?: Array<ModelGameSessionConditionInput | null> | null
+	or?: Array<ModelGameSessionConditionInput | null> | null
+	not?: ModelGameSessionConditionInput | null
+}
+
+export type UpdateGameSessionInput = {
+	id: string
+	lobbyID?: string | null
+	updatedAt?: string | null
+	createdAt?: string | null
+}
+
+export type DeleteGameSessionInput = {
+	id: string
+}
+
+export type CreateLobbyInput = {
+	id?: string | null
+	code: string
+	isActive: boolean
+	creatorID: string
+	gameSessionID?: string | null
+	updatedAt?: string | null
+	createdAt?: string | null
+}
+
+export type ModelLobbyConditionInput = {
+	code?: ModelStringInput | null
+	isActive?: ModelBooleanInput | null
+	creatorID?: ModelIDInput | null
+	gameSessionID?: ModelIDInput | null
+	updatedAt?: ModelStringInput | null
+	createdAt?: ModelStringInput | null
+	and?: Array<ModelLobbyConditionInput | null> | null
+	or?: Array<ModelLobbyConditionInput | null> | null
+	not?: ModelLobbyConditionInput | null
+}
+
+export type UpdateLobbyInput = {
+	id: string
+	code?: string | null
+	isActive?: boolean | null
+	creatorID?: string | null
+	gameSessionID?: string | null
+	updatedAt?: string | null
+	createdAt?: string | null
+}
+
+export type DeleteLobbyInput = {
+	id: string
+}
+
+export type CreateUserInput = {
+	id?: string | null
+	email: string
+	name: string
+	selfie?: string | null
+	status: UserStatus
+	type: UserType
+	updatedAt?: string | null
+	createdAt?: string | null
+}
+
+export type ModelUserConditionInput = {
+	email?: ModelStringInput | null
+	name?: ModelStringInput | null
+	selfie?: ModelStringInput | null
+	status?: ModelUserStatusInput | null
+	type?: ModelUserTypeInput | null
+	updatedAt?: ModelStringInput | null
+	createdAt?: ModelStringInput | null
+	and?: Array<ModelUserConditionInput | null> | null
+	or?: Array<ModelUserConditionInput | null> | null
+	not?: ModelUserConditionInput | null
+}
+
+export type ModelUserStatusInput = {
+	eq?: UserStatus | null
+	ne?: UserStatus | null
+}
+
+export type ModelUserTypeInput = {
+	eq?: UserType | null
+	ne?: UserType | null
+}
+
+export type UpdateUserInput = {
+	id: string
+	email?: string | null
+	name?: string | null
+	selfie?: string | null
+	status?: UserStatus | null
+	type?: UserType | null
+	updatedAt?: string | null
+	createdAt?: string | null
+}
+
+export type DeleteUserInput = {
+	id: string
+}
+
+export type CreateLobbiesJoinedInput = {
+	id?: string | null
+	lobbyId: string
+	userId: string
+}
+
+export type ModelLobbiesJoinedConditionInput = {
+	lobbyId?: ModelIDInput | null
+	userId?: ModelIDInput | null
+	and?: Array<ModelLobbiesJoinedConditionInput | null> | null
+	or?: Array<ModelLobbiesJoinedConditionInput | null> | null
+	not?: ModelLobbiesJoinedConditionInput | null
+}
+
+export type UpdateLobbiesJoinedInput = {
+	id: string
+	lobbyId?: string | null
+	userId?: string | null
+}
+
+export type DeleteLobbiesJoinedInput = {
+	id: string
+}
+
+export type ModelGameRoundFilterInput = {
+	id?: ModelIDInput | null
+	index?: ModelIntInput | null
+	question?: ModelStringInput | null
+	correctAnswer?: ModelStringInput | null
+	isComplete?: ModelBooleanInput | null
+	gameSessionID?: ModelIDInput | null
+	updatedAt?: ModelStringInput | null
+	createdAt?: ModelStringInput | null
+	and?: Array<ModelGameRoundFilterInput | null> | null
+	or?: Array<ModelGameRoundFilterInput | null> | null
+	not?: ModelGameRoundFilterInput | null
+}
+
+export type ModelSubmittedAnswerFilterInput = {
+	id?: ModelIDInput | null
+	answer?: ModelStringInput | null
+	isCorrect?: ModelBooleanInput | null
+	userID?: ModelIDInput | null
+	gameRoundID?: ModelIDInput | null
+	updatedAt?: ModelStringInput | null
+	createdAt?: ModelStringInput | null
+	and?: Array<ModelSubmittedAnswerFilterInput | null> | null
+	or?: Array<ModelSubmittedAnswerFilterInput | null> | null
+	not?: ModelSubmittedAnswerFilterInput | null
+}
+
+export type ModelGameSessionFilterInput = {
+	id?: ModelIDInput | null
+	lobbyID?: ModelIDInput | null
+	updatedAt?: ModelStringInput | null
+	createdAt?: ModelStringInput | null
+	and?: Array<ModelGameSessionFilterInput | null> | null
+	or?: Array<ModelGameSessionFilterInput | null> | null
+	not?: ModelGameSessionFilterInput | null
+}
+
+export type ModelGameSessionConnection = {
+	__typename: "ModelGameSessionConnection"
+	items: Array<GameSession | null>
+	nextToken?: string | null
+}
+
+export type ModelLobbyFilterInput = {
+	id?: ModelIDInput | null
+	code?: ModelStringInput | null
+	isActive?: ModelBooleanInput | null
+	creatorID?: ModelIDInput | null
+	gameSessionID?: ModelIDInput | null
+	updatedAt?: ModelStringInput | null
+	createdAt?: ModelStringInput | null
+	and?: Array<ModelLobbyFilterInput | null> | null
+	or?: Array<ModelLobbyFilterInput | null> | null
+	not?: ModelLobbyFilterInput | null
+}
+
+export type ModelUserFilterInput = {
+	id?: ModelIDInput | null
+	email?: ModelStringInput | null
+	name?: ModelStringInput | null
+	selfie?: ModelStringInput | null
+	status?: ModelUserStatusInput | null
+	type?: ModelUserTypeInput | null
+	updatedAt?: ModelStringInput | null
+	createdAt?: ModelStringInput | null
+	and?: Array<ModelUserFilterInput | null> | null
+	or?: Array<ModelUserFilterInput | null> | null
+	not?: ModelUserFilterInput | null
+}
+
+export type ModelUserConnection = {
+	__typename: "ModelUserConnection"
+	items: Array<User | null>
+	nextToken?: string | null
+}
+
+export type ModelLobbiesJoinedFilterInput = {
+	id?: ModelIDInput | null
+	lobbyId?: ModelIDInput | null
+	userId?: ModelIDInput | null
+	and?: Array<ModelLobbiesJoinedFilterInput | null> | null
+	or?: Array<ModelLobbiesJoinedFilterInput | null> | null
+	not?: ModelLobbiesJoinedFilterInput | null
+}
+
+export enum ModelSortDirection {
+	ASC = "ASC",
+	DESC = "DESC",
+}
+
+export type ModelSubscriptionGameRoundFilterInput = {
 	id?: ModelSubscriptionIDInput | null
-	name?: ModelSubscriptionStringInput | null
-	and?: Array<ModelSubscriptionBlogFilterInput | null> | null
-	or?: Array<ModelSubscriptionBlogFilterInput | null> | null
+	index?: ModelSubscriptionIntInput | null
+	question?: ModelSubscriptionStringInput | null
+	correctAnswer?: ModelSubscriptionStringInput | null
+	isComplete?: ModelSubscriptionBooleanInput | null
+	gameSessionID?: ModelSubscriptionIDInput | null
+	updatedAt?: ModelSubscriptionStringInput | null
+	createdAt?: ModelSubscriptionStringInput | null
+	and?: Array<ModelSubscriptionGameRoundFilterInput | null> | null
+	or?: Array<ModelSubscriptionGameRoundFilterInput | null> | null
 }
 
 export type ModelSubscriptionIDInput = {
@@ -222,6 +516,18 @@ export type ModelSubscriptionIDInput = {
 	notIn?: Array<string | null> | null
 }
 
+export type ModelSubscriptionIntInput = {
+	ne?: number | null
+	eq?: number | null
+	le?: number | null
+	lt?: number | null
+	ge?: number | null
+	gt?: number | null
+	between?: Array<number | null> | null
+	in?: Array<number | null> | null
+	notIn?: Array<number | null> | null
+}
+
 export type ModelSubscriptionStringInput = {
 	ne?: string | null
 	eq?: string | null
@@ -237,366 +543,1821 @@ export type ModelSubscriptionStringInput = {
 	notIn?: Array<string | null> | null
 }
 
-export type ModelSubscriptionPostFilterInput = {
+export type ModelSubscriptionBooleanInput = {
+	ne?: boolean | null
+	eq?: boolean | null
+}
+
+export type ModelSubscriptionSubmittedAnswerFilterInput = {
 	id?: ModelSubscriptionIDInput | null
-	title?: ModelSubscriptionStringInput | null
-	and?: Array<ModelSubscriptionPostFilterInput | null> | null
-	or?: Array<ModelSubscriptionPostFilterInput | null> | null
+	answer?: ModelSubscriptionStringInput | null
+	isCorrect?: ModelSubscriptionBooleanInput | null
+	userID?: ModelSubscriptionIDInput | null
+	gameRoundID?: ModelSubscriptionIDInput | null
+	updatedAt?: ModelSubscriptionStringInput | null
+	createdAt?: ModelSubscriptionStringInput | null
+	and?: Array<ModelSubscriptionSubmittedAnswerFilterInput | null> | null
+	or?: Array<ModelSubscriptionSubmittedAnswerFilterInput | null> | null
 }
 
-export type ModelSubscriptionCommentFilterInput = {
+export type ModelSubscriptionGameSessionFilterInput = {
 	id?: ModelSubscriptionIDInput | null
-	content?: ModelSubscriptionStringInput | null
-	and?: Array<ModelSubscriptionCommentFilterInput | null> | null
-	or?: Array<ModelSubscriptionCommentFilterInput | null> | null
+	lobbyID?: ModelSubscriptionIDInput | null
+	updatedAt?: ModelSubscriptionStringInput | null
+	createdAt?: ModelSubscriptionStringInput | null
+	and?: Array<ModelSubscriptionGameSessionFilterInput | null> | null
+	or?: Array<ModelSubscriptionGameSessionFilterInput | null> | null
 }
 
-export type CreateBlogMutationVariables = {
-	input: CreateBlogInput
-	condition?: ModelBlogConditionInput | null
+export type ModelSubscriptionLobbyFilterInput = {
+	id?: ModelSubscriptionIDInput | null
+	code?: ModelSubscriptionStringInput | null
+	isActive?: ModelSubscriptionBooleanInput | null
+	creatorID?: ModelSubscriptionIDInput | null
+	gameSessionID?: ModelSubscriptionIDInput | null
+	updatedAt?: ModelSubscriptionStringInput | null
+	createdAt?: ModelSubscriptionStringInput | null
+	and?: Array<ModelSubscriptionLobbyFilterInput | null> | null
+	or?: Array<ModelSubscriptionLobbyFilterInput | null> | null
 }
 
-export type CreateBlogMutation = {
-	createBlog?: {
-		__typename: "Blog"
+export type ModelSubscriptionUserFilterInput = {
+	id?: ModelSubscriptionIDInput | null
+	email?: ModelSubscriptionStringInput | null
+	name?: ModelSubscriptionStringInput | null
+	selfie?: ModelSubscriptionStringInput | null
+	status?: ModelSubscriptionStringInput | null
+	type?: ModelSubscriptionStringInput | null
+	updatedAt?: ModelSubscriptionStringInput | null
+	createdAt?: ModelSubscriptionStringInput | null
+	and?: Array<ModelSubscriptionUserFilterInput | null> | null
+	or?: Array<ModelSubscriptionUserFilterInput | null> | null
+}
+
+export type ModelSubscriptionLobbiesJoinedFilterInput = {
+	id?: ModelSubscriptionIDInput | null
+	lobbyId?: ModelSubscriptionIDInput | null
+	userId?: ModelSubscriptionIDInput | null
+	and?: Array<ModelSubscriptionLobbiesJoinedFilterInput | null> | null
+	or?: Array<ModelSubscriptionLobbiesJoinedFilterInput | null> | null
+}
+
+export type CreateGameRoundMutationVariables = {
+	input: CreateGameRoundInput
+	condition?: ModelGameRoundConditionInput | null
+}
+
+export type CreateGameRoundMutation = {
+	createGameRound?: {
+		__typename: "GameRound"
 		id: string
-		name: string
-		posts?: {
-			__typename: "ModelPostConnection"
+		index: number
+		question: string
+		correctAnswer: string
+		isComplete: boolean
+		submittedAnswers?: {
+			__typename: "ModelSubmittedAnswerConnection"
 			items: Array<{
-				__typename: "Post"
+				__typename: "SubmittedAnswer"
 				id: string
-				title: string
-				createdAt: string
+				answer: string
+				isCorrect?: boolean | null
+				userID: string
+				gameRoundID: string
 				updatedAt: string
-				blogPostsId?: string | null
+				createdAt: string
 			} | null>
 			nextToken?: string | null
 		} | null
-		createdAt: string
-		updatedAt: string
-	} | null
-}
-
-export type UpdateBlogMutationVariables = {
-	input: UpdateBlogInput
-	condition?: ModelBlogConditionInput | null
-}
-
-export type UpdateBlogMutation = {
-	updateBlog?: {
-		__typename: "Blog"
-		id: string
-		name: string
-		posts?: {
-			__typename: "ModelPostConnection"
-			items: Array<{
-				__typename: "Post"
-				id: string
-				title: string
-				createdAt: string
-				updatedAt: string
-				blogPostsId?: string | null
-			} | null>
-			nextToken?: string | null
-		} | null
-		createdAt: string
-		updatedAt: string
-	} | null
-}
-
-export type DeleteBlogMutationVariables = {
-	input: DeleteBlogInput
-	condition?: ModelBlogConditionInput | null
-}
-
-export type DeleteBlogMutation = {
-	deleteBlog?: {
-		__typename: "Blog"
-		id: string
-		name: string
-		posts?: {
-			__typename: "ModelPostConnection"
-			items: Array<{
-				__typename: "Post"
-				id: string
-				title: string
-				createdAt: string
-				updatedAt: string
-				blogPostsId?: string | null
-			} | null>
-			nextToken?: string | null
-		} | null
-		createdAt: string
-		updatedAt: string
-	} | null
-}
-
-export type CreatePostMutationVariables = {
-	input: CreatePostInput
-	condition?: ModelPostConditionInput | null
-}
-
-export type CreatePostMutation = {
-	createPost?: {
-		__typename: "Post"
-		id: string
-		title: string
-		blog?: {
-			__typename: "Blog"
+		gameSessionID: string
+		gameSession: {
+			__typename: "GameSession"
 			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type UpdateGameRoundMutationVariables = {
+	input: UpdateGameRoundInput
+	condition?: ModelGameRoundConditionInput | null
+}
+
+export type UpdateGameRoundMutation = {
+	updateGameRound?: {
+		__typename: "GameRound"
+		id: string
+		index: number
+		question: string
+		correctAnswer: string
+		isComplete: boolean
+		submittedAnswers?: {
+			__typename: "ModelSubmittedAnswerConnection"
+			items: Array<{
+				__typename: "SubmittedAnswer"
+				id: string
+				answer: string
+				isCorrect?: boolean | null
+				userID: string
+				gameRoundID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		gameSessionID: string
+		gameSession: {
+			__typename: "GameSession"
+			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type DeleteGameRoundMutationVariables = {
+	input: DeleteGameRoundInput
+	condition?: ModelGameRoundConditionInput | null
+}
+
+export type DeleteGameRoundMutation = {
+	deleteGameRound?: {
+		__typename: "GameRound"
+		id: string
+		index: number
+		question: string
+		correctAnswer: string
+		isComplete: boolean
+		submittedAnswers?: {
+			__typename: "ModelSubmittedAnswerConnection"
+			items: Array<{
+				__typename: "SubmittedAnswer"
+				id: string
+				answer: string
+				isCorrect?: boolean | null
+				userID: string
+				gameRoundID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		gameSessionID: string
+		gameSession: {
+			__typename: "GameSession"
+			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type CreateSubmittedAnswerMutationVariables = {
+	input: CreateSubmittedAnswerInput
+	condition?: ModelSubmittedAnswerConditionInput | null
+}
+
+export type CreateSubmittedAnswerMutation = {
+	createSubmittedAnswer?: {
+		__typename: "SubmittedAnswer"
+		id: string
+		answer: string
+		isCorrect?: boolean | null
+		userID: string
+		user: {
+			__typename: "User"
+			id: string
+			email: string
 			name: string
-			posts?: {
-				__typename: "ModelPostConnection"
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
 				nextToken?: string | null
 			} | null
-			createdAt: string
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
 			updatedAt: string
-		} | null
-		comments?: {
-			__typename: "ModelCommentConnection"
-			items: Array<{
-				__typename: "Comment"
+			createdAt: string
+		}
+		gameRoundID: string
+		gameRound: {
+			__typename: "GameRound"
+			id: string
+			index: number
+			question: string
+			correctAnswer: string
+			isComplete: boolean
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			gameSessionID: string
+			gameSession: {
+				__typename: "GameSession"
 				id: string
-				content: string
-				createdAt: string
+				lobbyID: string
 				updatedAt: string
-				postCommentsId?: string | null
-			} | null>
-			nextToken?: string | null
-		} | null
-		createdAt: string
+				createdAt: string
+			}
+			updatedAt: string
+			createdAt: string
+		}
 		updatedAt: string
-		blogPostsId?: string | null
+		createdAt: string
 	} | null
 }
 
-export type UpdatePostMutationVariables = {
-	input: UpdatePostInput
-	condition?: ModelPostConditionInput | null
+export type UpdateSubmittedAnswerMutationVariables = {
+	input: UpdateSubmittedAnswerInput
+	condition?: ModelSubmittedAnswerConditionInput | null
 }
 
-export type UpdatePostMutation = {
-	updatePost?: {
-		__typename: "Post"
+export type UpdateSubmittedAnswerMutation = {
+	updateSubmittedAnswer?: {
+		__typename: "SubmittedAnswer"
 		id: string
-		title: string
-		blog?: {
-			__typename: "Blog"
+		answer: string
+		isCorrect?: boolean | null
+		userID: string
+		user: {
+			__typename: "User"
 			id: string
+			email: string
 			name: string
-			posts?: {
-				__typename: "ModelPostConnection"
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
 				nextToken?: string | null
 			} | null
-			createdAt: string
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
 			updatedAt: string
-		} | null
-		comments?: {
-			__typename: "ModelCommentConnection"
-			items: Array<{
-				__typename: "Comment"
+			createdAt: string
+		}
+		gameRoundID: string
+		gameRound: {
+			__typename: "GameRound"
+			id: string
+			index: number
+			question: string
+			correctAnswer: string
+			isComplete: boolean
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			gameSessionID: string
+			gameSession: {
+				__typename: "GameSession"
 				id: string
-				content: string
-				createdAt: string
+				lobbyID: string
 				updatedAt: string
-				postCommentsId?: string | null
-			} | null>
-			nextToken?: string | null
-		} | null
-		createdAt: string
+				createdAt: string
+			}
+			updatedAt: string
+			createdAt: string
+		}
 		updatedAt: string
-		blogPostsId?: string | null
+		createdAt: string
 	} | null
 }
 
-export type DeletePostMutationVariables = {
-	input: DeletePostInput
-	condition?: ModelPostConditionInput | null
+export type DeleteSubmittedAnswerMutationVariables = {
+	input: DeleteSubmittedAnswerInput
+	condition?: ModelSubmittedAnswerConditionInput | null
 }
 
-export type DeletePostMutation = {
-	deletePost?: {
-		__typename: "Post"
+export type DeleteSubmittedAnswerMutation = {
+	deleteSubmittedAnswer?: {
+		__typename: "SubmittedAnswer"
 		id: string
-		title: string
-		blog?: {
-			__typename: "Blog"
+		answer: string
+		isCorrect?: boolean | null
+		userID: string
+		user: {
+			__typename: "User"
 			id: string
+			email: string
 			name: string
-			posts?: {
-				__typename: "ModelPostConnection"
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
 				nextToken?: string | null
 			} | null
-			createdAt: string
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
 			updatedAt: string
-		} | null
-		comments?: {
-			__typename: "ModelCommentConnection"
-			items: Array<{
-				__typename: "Comment"
+			createdAt: string
+		}
+		gameRoundID: string
+		gameRound: {
+			__typename: "GameRound"
+			id: string
+			index: number
+			question: string
+			correctAnswer: string
+			isComplete: boolean
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			gameSessionID: string
+			gameSession: {
+				__typename: "GameSession"
 				id: string
-				content: string
-				createdAt: string
+				lobbyID: string
 				updatedAt: string
-				postCommentsId?: string | null
+				createdAt: string
+			}
+			updatedAt: string
+			createdAt: string
+		}
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type CreateGameSessionMutationVariables = {
+	input: CreateGameSessionInput
+	condition?: ModelGameSessionConditionInput | null
+}
+
+export type CreateGameSessionMutation = {
+	createGameSession?: {
+		__typename: "GameSession"
+		id: string
+		lobbyID: string
+		lobby: {
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		rounds?: {
+			__typename: "ModelGameRoundConnection"
+			items: Array<{
+				__typename: "GameRound"
+				id: string
+				index: number
+				question: string
+				correctAnswer: string
+				isComplete: boolean
+				gameSessionID: string
+				updatedAt: string
+				createdAt: string
 			} | null>
 			nextToken?: string | null
 		} | null
-		createdAt: string
 		updatedAt: string
-		blogPostsId?: string | null
+		createdAt: string
 	} | null
 }
 
-export type CreateCommentMutationVariables = {
-	input: CreateCommentInput
-	condition?: ModelCommentConditionInput | null
+export type UpdateGameSessionMutationVariables = {
+	input: UpdateGameSessionInput
+	condition?: ModelGameSessionConditionInput | null
 }
 
-export type CreateCommentMutation = {
-	createComment?: {
-		__typename: "Comment"
+export type UpdateGameSessionMutation = {
+	updateGameSession?: {
+		__typename: "GameSession"
 		id: string
-		post?: {
-			__typename: "Post"
+		lobbyID: string
+		lobby: {
+			__typename: "Lobby"
 			id: string
-			title: string
-			blog?: {
-				__typename: "Blog"
-				id: string
-				name: string
-				createdAt: string
-				updatedAt: string
-			} | null
-			comments?: {
-				__typename: "ModelCommentConnection"
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
 				nextToken?: string | null
 			} | null
-			createdAt: string
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
 			updatedAt: string
-			blogPostsId?: string | null
+			createdAt: string
+		}
+		rounds?: {
+			__typename: "ModelGameRoundConnection"
+			items: Array<{
+				__typename: "GameRound"
+				id: string
+				index: number
+				question: string
+				correctAnswer: string
+				isComplete: boolean
+				gameSessionID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
 		} | null
-		content: string
-		createdAt: string
 		updatedAt: string
-		postCommentsId?: string | null
+		createdAt: string
 	} | null
 }
 
-export type UpdateCommentMutationVariables = {
-	input: UpdateCommentInput
-	condition?: ModelCommentConditionInput | null
+export type DeleteGameSessionMutationVariables = {
+	input: DeleteGameSessionInput
+	condition?: ModelGameSessionConditionInput | null
 }
 
-export type UpdateCommentMutation = {
-	updateComment?: {
-		__typename: "Comment"
+export type DeleteGameSessionMutation = {
+	deleteGameSession?: {
+		__typename: "GameSession"
 		id: string
-		post?: {
-			__typename: "Post"
+		lobbyID: string
+		lobby: {
+			__typename: "Lobby"
 			id: string
-			title: string
-			blog?: {
-				__typename: "Blog"
-				id: string
-				name: string
-				createdAt: string
-				updatedAt: string
-			} | null
-			comments?: {
-				__typename: "ModelCommentConnection"
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
 				nextToken?: string | null
 			} | null
-			createdAt: string
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
 			updatedAt: string
-			blogPostsId?: string | null
+			createdAt: string
+		}
+		rounds?: {
+			__typename: "ModelGameRoundConnection"
+			items: Array<{
+				__typename: "GameRound"
+				id: string
+				index: number
+				question: string
+				correctAnswer: string
+				isComplete: boolean
+				gameSessionID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
 		} | null
-		content: string
-		createdAt: string
 		updatedAt: string
-		postCommentsId?: string | null
+		createdAt: string
 	} | null
 }
 
-export type DeleteCommentMutationVariables = {
-	input: DeleteCommentInput
-	condition?: ModelCommentConditionInput | null
+export type CreateLobbyMutationVariables = {
+	input: CreateLobbyInput
+	condition?: ModelLobbyConditionInput | null
 }
 
-export type DeleteCommentMutation = {
-	deleteComment?: {
-		__typename: "Comment"
+export type CreateLobbyMutation = {
+	createLobby?: {
+		__typename: "Lobby"
 		id: string
-		post?: {
-			__typename: "Post"
-			id: string
-			title: string
-			blog?: {
-				__typename: "Blog"
+		code: string
+		isActive: boolean
+		participants?: {
+			__typename: "ModelLobbiesJoinedConnection"
+			items: Array<{
+				__typename: "LobbiesJoined"
 				id: string
-				name: string
+				lobbyId: string
+				userId: string
 				createdAt: string
 				updatedAt: string
-			} | null
-			comments?: {
-				__typename: "ModelCommentConnection"
+			} | null>
+			nextToken?: string | null
+		} | null
+		creatorID: string
+		creator: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
 				nextToken?: string | null
 			} | null
-			createdAt: string
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
 			updatedAt: string
-			blogPostsId?: string | null
+			createdAt: string
+		}
+		gameSessionID?: string | null
+		gameSession?: {
+			__typename: "GameSession"
+			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
 		} | null
-		content: string
-		createdAt: string
 		updatedAt: string
-		postCommentsId?: string | null
+		createdAt: string
 	} | null
 }
 
-export type GetBlogQueryVariables = {
+export type UpdateLobbyMutationVariables = {
+	input: UpdateLobbyInput
+	condition?: ModelLobbyConditionInput | null
+}
+
+export type UpdateLobbyMutation = {
+	updateLobby?: {
+		__typename: "Lobby"
+		id: string
+		code: string
+		isActive: boolean
+		participants?: {
+			__typename: "ModelLobbiesJoinedConnection"
+			items: Array<{
+				__typename: "LobbiesJoined"
+				id: string
+				lobbyId: string
+				userId: string
+				createdAt: string
+				updatedAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		creatorID: string
+		creator: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		gameSessionID?: string | null
+		gameSession?: {
+			__typename: "GameSession"
+			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type DeleteLobbyMutationVariables = {
+	input: DeleteLobbyInput
+	condition?: ModelLobbyConditionInput | null
+}
+
+export type DeleteLobbyMutation = {
+	deleteLobby?: {
+		__typename: "Lobby"
+		id: string
+		code: string
+		isActive: boolean
+		participants?: {
+			__typename: "ModelLobbiesJoinedConnection"
+			items: Array<{
+				__typename: "LobbiesJoined"
+				id: string
+				lobbyId: string
+				userId: string
+				createdAt: string
+				updatedAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		creatorID: string
+		creator: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		gameSessionID?: string | null
+		gameSession?: {
+			__typename: "GameSession"
+			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type CreateUserMutationVariables = {
+	input: CreateUserInput
+	condition?: ModelUserConditionInput | null
+}
+
+export type CreateUserMutation = {
+	createUser?: {
+		__typename: "User"
+		id: string
+		email: string
+		name: string
+		selfie?: string | null
+		status: UserStatus
+		type: UserType
+		createdLobbies?: {
+			__typename: "ModelLobbyConnection"
+			items: Array<{
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		joinedLobbies?: {
+			__typename: "ModelLobbiesJoinedConnection"
+			items: Array<{
+				__typename: "LobbiesJoined"
+				id: string
+				lobbyId: string
+				userId: string
+				createdAt: string
+				updatedAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		submittedAnswers?: {
+			__typename: "ModelSubmittedAnswerConnection"
+			items: Array<{
+				__typename: "SubmittedAnswer"
+				id: string
+				answer: string
+				isCorrect?: boolean | null
+				userID: string
+				gameRoundID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type UpdateUserMutationVariables = {
+	input: UpdateUserInput
+	condition?: ModelUserConditionInput | null
+}
+
+export type UpdateUserMutation = {
+	updateUser?: {
+		__typename: "User"
+		id: string
+		email: string
+		name: string
+		selfie?: string | null
+		status: UserStatus
+		type: UserType
+		createdLobbies?: {
+			__typename: "ModelLobbyConnection"
+			items: Array<{
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		joinedLobbies?: {
+			__typename: "ModelLobbiesJoinedConnection"
+			items: Array<{
+				__typename: "LobbiesJoined"
+				id: string
+				lobbyId: string
+				userId: string
+				createdAt: string
+				updatedAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		submittedAnswers?: {
+			__typename: "ModelSubmittedAnswerConnection"
+			items: Array<{
+				__typename: "SubmittedAnswer"
+				id: string
+				answer: string
+				isCorrect?: boolean | null
+				userID: string
+				gameRoundID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type DeleteUserMutationVariables = {
+	input: DeleteUserInput
+	condition?: ModelUserConditionInput | null
+}
+
+export type DeleteUserMutation = {
+	deleteUser?: {
+		__typename: "User"
+		id: string
+		email: string
+		name: string
+		selfie?: string | null
+		status: UserStatus
+		type: UserType
+		createdLobbies?: {
+			__typename: "ModelLobbyConnection"
+			items: Array<{
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		joinedLobbies?: {
+			__typename: "ModelLobbiesJoinedConnection"
+			items: Array<{
+				__typename: "LobbiesJoined"
+				id: string
+				lobbyId: string
+				userId: string
+				createdAt: string
+				updatedAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		submittedAnswers?: {
+			__typename: "ModelSubmittedAnswerConnection"
+			items: Array<{
+				__typename: "SubmittedAnswer"
+				id: string
+				answer: string
+				isCorrect?: boolean | null
+				userID: string
+				gameRoundID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type CreateLobbiesJoinedMutationVariables = {
+	input: CreateLobbiesJoinedInput
+	condition?: ModelLobbiesJoinedConditionInput | null
+}
+
+export type CreateLobbiesJoinedMutation = {
+	createLobbiesJoined?: {
+		__typename: "LobbiesJoined"
+		id: string
+		lobbyId: string
+		userId: string
+		lobby: {
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		user: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		createdAt: string
+		updatedAt: string
+	} | null
+}
+
+export type UpdateLobbiesJoinedMutationVariables = {
+	input: UpdateLobbiesJoinedInput
+	condition?: ModelLobbiesJoinedConditionInput | null
+}
+
+export type UpdateLobbiesJoinedMutation = {
+	updateLobbiesJoined?: {
+		__typename: "LobbiesJoined"
+		id: string
+		lobbyId: string
+		userId: string
+		lobby: {
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		user: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		createdAt: string
+		updatedAt: string
+	} | null
+}
+
+export type DeleteLobbiesJoinedMutationVariables = {
+	input: DeleteLobbiesJoinedInput
+	condition?: ModelLobbiesJoinedConditionInput | null
+}
+
+export type DeleteLobbiesJoinedMutation = {
+	deleteLobbiesJoined?: {
+		__typename: "LobbiesJoined"
+		id: string
+		lobbyId: string
+		userId: string
+		lobby: {
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		user: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		createdAt: string
+		updatedAt: string
+	} | null
+}
+
+export type GetGameRoundQueryVariables = {
 	id: string
 }
 
-export type GetBlogQuery = {
-	getBlog?: {
-		__typename: "Blog"
+export type GetGameRoundQuery = {
+	getGameRound?: {
+		__typename: "GameRound"
 		id: string
-		name: string
-		posts?: {
-			__typename: "ModelPostConnection"
+		index: number
+		question: string
+		correctAnswer: string
+		isComplete: boolean
+		submittedAnswers?: {
+			__typename: "ModelSubmittedAnswerConnection"
 			items: Array<{
-				__typename: "Post"
+				__typename: "SubmittedAnswer"
 				id: string
-				title: string
-				createdAt: string
+				answer: string
+				isCorrect?: boolean | null
+				userID: string
+				gameRoundID: string
 				updatedAt: string
-				blogPostsId?: string | null
+				createdAt: string
 			} | null>
 			nextToken?: string | null
 		} | null
-		createdAt: string
+		gameSessionID: string
+		gameSession: {
+			__typename: "GameSession"
+			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
 		updatedAt: string
+		createdAt: string
 	} | null
 }
 
-export type ListBlogsQueryVariables = {
-	filter?: ModelBlogFilterInput | null
+export type ListGameRoundsQueryVariables = {
+	filter?: ModelGameRoundFilterInput | null
 	limit?: number | null
 	nextToken?: string | null
 }
 
-export type ListBlogsQuery = {
-	listBlogs?: {
-		__typename: "ModelBlogConnection"
+export type ListGameRoundsQuery = {
+	listGameRounds?: {
+		__typename: "ModelGameRoundConnection"
 		items: Array<{
-			__typename: "Blog"
+			__typename: "GameRound"
 			id: string
-			name: string
-			posts?: {
-				__typename: "ModelPostConnection"
+			index: number
+			question: string
+			correctAnswer: string
+			isComplete: boolean
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
 				nextToken?: string | null
 			} | null
+			gameSessionID: string
+			gameSession: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			}
+			updatedAt: string
+			createdAt: string
+		} | null>
+		nextToken?: string | null
+	} | null
+}
+
+export type GetSubmittedAnswerQueryVariables = {
+	id: string
+}
+
+export type GetSubmittedAnswerQuery = {
+	getSubmittedAnswer?: {
+		__typename: "SubmittedAnswer"
+		id: string
+		answer: string
+		isCorrect?: boolean | null
+		userID: string
+		user: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		gameRoundID: string
+		gameRound: {
+			__typename: "GameRound"
+			id: string
+			index: number
+			question: string
+			correctAnswer: string
+			isComplete: boolean
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			gameSessionID: string
+			gameSession: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			}
+			updatedAt: string
+			createdAt: string
+		}
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type ListSubmittedAnswersQueryVariables = {
+	filter?: ModelSubmittedAnswerFilterInput | null
+	limit?: number | null
+	nextToken?: string | null
+}
+
+export type ListSubmittedAnswersQuery = {
+	listSubmittedAnswers?: {
+		__typename: "ModelSubmittedAnswerConnection"
+		items: Array<{
+			__typename: "SubmittedAnswer"
+			id: string
+			answer: string
+			isCorrect?: boolean | null
+			userID: string
+			user: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameRoundID: string
+			gameRound: {
+				__typename: "GameRound"
+				id: string
+				index: number
+				question: string
+				correctAnswer: string
+				isComplete: boolean
+				gameSessionID: string
+				updatedAt: string
+				createdAt: string
+			}
+			updatedAt: string
+			createdAt: string
+		} | null>
+		nextToken?: string | null
+	} | null
+}
+
+export type GetGameSessionQueryVariables = {
+	id: string
+}
+
+export type GetGameSessionQuery = {
+	getGameSession?: {
+		__typename: "GameSession"
+		id: string
+		lobbyID: string
+		lobby: {
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		rounds?: {
+			__typename: "ModelGameRoundConnection"
+			items: Array<{
+				__typename: "GameRound"
+				id: string
+				index: number
+				question: string
+				correctAnswer: string
+				isComplete: boolean
+				gameSessionID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type ListGameSessionsQueryVariables = {
+	filter?: ModelGameSessionFilterInput | null
+	limit?: number | null
+	nextToken?: string | null
+}
+
+export type ListGameSessionsQuery = {
+	listGameSessions?: {
+		__typename: "ModelGameSessionConnection"
+		items: Array<{
+			__typename: "GameSession"
+			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		} | null>
+		nextToken?: string | null
+	} | null
+}
+
+export type GetLobbyQueryVariables = {
+	id: string
+}
+
+export type GetLobbyQuery = {
+	getLobby?: {
+		__typename: "Lobby"
+		id: string
+		code: string
+		isActive: boolean
+		participants?: {
+			__typename: "ModelLobbiesJoinedConnection"
+			items: Array<{
+				__typename: "LobbiesJoined"
+				id: string
+				lobbyId: string
+				userId: string
+				createdAt: string
+				updatedAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		creatorID: string
+		creator: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		gameSessionID?: string | null
+		gameSession?: {
+			__typename: "GameSession"
+			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type ListLobbiesQueryVariables = {
+	filter?: ModelLobbyFilterInput | null
+	limit?: number | null
+	nextToken?: string | null
+}
+
+export type ListLobbiesQuery = {
+	listLobbies?: {
+		__typename: "ModelLobbyConnection"
+		items: Array<{
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		} | null>
+		nextToken?: string | null
+	} | null
+}
+
+export type GetUserQueryVariables = {
+	id: string
+}
+
+export type GetUserQuery = {
+	getUser?: {
+		__typename: "User"
+		id: string
+		email: string
+		name: string
+		selfie?: string | null
+		status: UserStatus
+		type: UserType
+		createdLobbies?: {
+			__typename: "ModelLobbyConnection"
+			items: Array<{
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		joinedLobbies?: {
+			__typename: "ModelLobbiesJoinedConnection"
+			items: Array<{
+				__typename: "LobbiesJoined"
+				id: string
+				lobbyId: string
+				userId: string
+				createdAt: string
+				updatedAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		submittedAnswers?: {
+			__typename: "ModelSubmittedAnswerConnection"
+			items: Array<{
+				__typename: "SubmittedAnswer"
+				id: string
+				answer: string
+				isCorrect?: boolean | null
+				userID: string
+				gameRoundID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type ListUsersQueryVariables = {
+	filter?: ModelUserFilterInput | null
+	limit?: number | null
+	nextToken?: string | null
+}
+
+export type ListUsersQuery = {
+	listUsers?: {
+		__typename: "ModelUserConnection"
+		items: Array<{
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		} | null>
+		nextToken?: string | null
+	} | null
+}
+
+export type GetLobbiesJoinedQueryVariables = {
+	id: string
+}
+
+export type GetLobbiesJoinedQuery = {
+	getLobbiesJoined?: {
+		__typename: "LobbiesJoined"
+		id: string
+		lobbyId: string
+		userId: string
+		lobby: {
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		user: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		createdAt: string
+		updatedAt: string
+	} | null
+}
+
+export type ListLobbiesJoinedsQueryVariables = {
+	filter?: ModelLobbiesJoinedFilterInput | null
+	limit?: number | null
+	nextToken?: string | null
+}
+
+export type ListLobbiesJoinedsQuery = {
+	listLobbiesJoineds?: {
+		__typename: "ModelLobbiesJoinedConnection"
+		items: Array<{
+			__typename: "LobbiesJoined"
+			id: string
+			lobbyId: string
+			userId: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			user: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
 			createdAt: string
 			updatedAt: string
 		} | null>
@@ -604,429 +2365,1567 @@ export type ListBlogsQuery = {
 	} | null
 }
 
-export type GetPostQueryVariables = {
-	id: string
-}
-
-export type GetPostQuery = {
-	getPost?: {
-		__typename: "Post"
-		id: string
-		title: string
-		blog?: {
-			__typename: "Blog"
-			id: string
-			name: string
-			posts?: {
-				__typename: "ModelPostConnection"
-				nextToken?: string | null
-			} | null
-			createdAt: string
-			updatedAt: string
-		} | null
-		comments?: {
-			__typename: "ModelCommentConnection"
-			items: Array<{
-				__typename: "Comment"
-				id: string
-				content: string
-				createdAt: string
-				updatedAt: string
-				postCommentsId?: string | null
-			} | null>
-			nextToken?: string | null
-		} | null
-		createdAt: string
-		updatedAt: string
-		blogPostsId?: string | null
-	} | null
-}
-
-export type ListPostsQueryVariables = {
-	filter?: ModelPostFilterInput | null
+export type GetGameRoundByGameSessionIDQueryVariables = {
+	gameSessionID: string
+	sortDirection?: ModelSortDirection | null
+	filter?: ModelGameRoundFilterInput | null
 	limit?: number | null
 	nextToken?: string | null
 }
 
-export type ListPostsQuery = {
-	listPosts?: {
-		__typename: "ModelPostConnection"
+export type GetGameRoundByGameSessionIDQuery = {
+	getGameRoundByGameSessionID?: {
+		__typename: "ModelGameRoundConnection"
 		items: Array<{
-			__typename: "Post"
+			__typename: "GameRound"
 			id: string
-			title: string
-			blog?: {
-				__typename: "Blog"
-				id: string
-				name: string
-				createdAt: string
-				updatedAt: string
-			} | null
-			comments?: {
-				__typename: "ModelCommentConnection"
+			index: number
+			question: string
+			correctAnswer: string
+			isComplete: boolean
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
 				nextToken?: string | null
 			} | null
-			createdAt: string
+			gameSessionID: string
+			gameSession: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			}
 			updatedAt: string
-			blogPostsId?: string | null
+			createdAt: string
 		} | null>
 		nextToken?: string | null
 	} | null
 }
 
-export type GetCommentQueryVariables = {
-	id: string
-}
-
-export type GetCommentQuery = {
-	getComment?: {
-		__typename: "Comment"
-		id: string
-		post?: {
-			__typename: "Post"
-			id: string
-			title: string
-			blog?: {
-				__typename: "Blog"
-				id: string
-				name: string
-				createdAt: string
-				updatedAt: string
-			} | null
-			comments?: {
-				__typename: "ModelCommentConnection"
-				nextToken?: string | null
-			} | null
-			createdAt: string
-			updatedAt: string
-			blogPostsId?: string | null
-		} | null
-		content: string
-		createdAt: string
-		updatedAt: string
-		postCommentsId?: string | null
-	} | null
-}
-
-export type ListCommentsQueryVariables = {
-	filter?: ModelCommentFilterInput | null
+export type GetSubmittedAnswerByUserIDQueryVariables = {
+	userID: string
+	sortDirection?: ModelSortDirection | null
+	filter?: ModelSubmittedAnswerFilterInput | null
 	limit?: number | null
 	nextToken?: string | null
 }
 
-export type ListCommentsQuery = {
-	listComments?: {
-		__typename: "ModelCommentConnection"
+export type GetSubmittedAnswerByUserIDQuery = {
+	getSubmittedAnswerByUserID?: {
+		__typename: "ModelSubmittedAnswerConnection"
 		items: Array<{
-			__typename: "Comment"
+			__typename: "SubmittedAnswer"
 			id: string
-			post?: {
-				__typename: "Post"
+			answer: string
+			isCorrect?: boolean | null
+			userID: string
+			user: {
+				__typename: "User"
 				id: string
-				title: string
-				createdAt: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
 				updatedAt: string
-				blogPostsId?: string | null
-			} | null
-			content: string
-			createdAt: string
+				createdAt: string
+			}
+			gameRoundID: string
+			gameRound: {
+				__typename: "GameRound"
+				id: string
+				index: number
+				question: string
+				correctAnswer: string
+				isComplete: boolean
+				gameSessionID: string
+				updatedAt: string
+				createdAt: string
+			}
 			updatedAt: string
-			postCommentsId?: string | null
+			createdAt: string
 		} | null>
 		nextToken?: string | null
 	} | null
 }
 
-export type OnCreateBlogSubscriptionVariables = {
-	filter?: ModelSubscriptionBlogFilterInput | null
+export type GetSubmittedAnswerByGameRoundIDQueryVariables = {
+	gameRoundID: string
+	sortDirection?: ModelSortDirection | null
+	filter?: ModelSubmittedAnswerFilterInput | null
+	limit?: number | null
+	nextToken?: string | null
 }
 
-export type OnCreateBlogSubscription = {
-	onCreateBlog?: {
-		__typename: "Blog"
-		id: string
-		name: string
-		posts?: {
-			__typename: "ModelPostConnection"
-			items: Array<{
-				__typename: "Post"
-				id: string
-				title: string
-				createdAt: string
-				updatedAt: string
-				blogPostsId?: string | null
-			} | null>
-			nextToken?: string | null
-		} | null
-		createdAt: string
-		updatedAt: string
-	} | null
-}
-
-export type OnUpdateBlogSubscriptionVariables = {
-	filter?: ModelSubscriptionBlogFilterInput | null
-}
-
-export type OnUpdateBlogSubscription = {
-	onUpdateBlog?: {
-		__typename: "Blog"
-		id: string
-		name: string
-		posts?: {
-			__typename: "ModelPostConnection"
-			items: Array<{
-				__typename: "Post"
-				id: string
-				title: string
-				createdAt: string
-				updatedAt: string
-				blogPostsId?: string | null
-			} | null>
-			nextToken?: string | null
-		} | null
-		createdAt: string
-		updatedAt: string
-	} | null
-}
-
-export type OnDeleteBlogSubscriptionVariables = {
-	filter?: ModelSubscriptionBlogFilterInput | null
-}
-
-export type OnDeleteBlogSubscription = {
-	onDeleteBlog?: {
-		__typename: "Blog"
-		id: string
-		name: string
-		posts?: {
-			__typename: "ModelPostConnection"
-			items: Array<{
-				__typename: "Post"
-				id: string
-				title: string
-				createdAt: string
-				updatedAt: string
-				blogPostsId?: string | null
-			} | null>
-			nextToken?: string | null
-		} | null
-		createdAt: string
-		updatedAt: string
-	} | null
-}
-
-export type OnCreatePostSubscriptionVariables = {
-	filter?: ModelSubscriptionPostFilterInput | null
-}
-
-export type OnCreatePostSubscription = {
-	onCreatePost?: {
-		__typename: "Post"
-		id: string
-		title: string
-		blog?: {
-			__typename: "Blog"
+export type GetSubmittedAnswerByGameRoundIDQuery = {
+	getSubmittedAnswerByGameRoundID?: {
+		__typename: "ModelSubmittedAnswerConnection"
+		items: Array<{
+			__typename: "SubmittedAnswer"
 			id: string
-			name: string
-			posts?: {
-				__typename: "ModelPostConnection"
-				nextToken?: string | null
-			} | null
-			createdAt: string
-			updatedAt: string
-		} | null
-		comments?: {
-			__typename: "ModelCommentConnection"
-			items: Array<{
-				__typename: "Comment"
+			answer: string
+			isCorrect?: boolean | null
+			userID: string
+			user: {
+				__typename: "User"
 				id: string
-				content: string
-				createdAt: string
-				updatedAt: string
-				postCommentsId?: string | null
-			} | null>
-			nextToken?: string | null
-		} | null
-		createdAt: string
-		updatedAt: string
-		blogPostsId?: string | null
-	} | null
-}
-
-export type OnUpdatePostSubscriptionVariables = {
-	filter?: ModelSubscriptionPostFilterInput | null
-}
-
-export type OnUpdatePostSubscription = {
-	onUpdatePost?: {
-		__typename: "Post"
-		id: string
-		title: string
-		blog?: {
-			__typename: "Blog"
-			id: string
-			name: string
-			posts?: {
-				__typename: "ModelPostConnection"
-				nextToken?: string | null
-			} | null
-			createdAt: string
-			updatedAt: string
-		} | null
-		comments?: {
-			__typename: "ModelCommentConnection"
-			items: Array<{
-				__typename: "Comment"
-				id: string
-				content: string
-				createdAt: string
-				updatedAt: string
-				postCommentsId?: string | null
-			} | null>
-			nextToken?: string | null
-		} | null
-		createdAt: string
-		updatedAt: string
-		blogPostsId?: string | null
-	} | null
-}
-
-export type OnDeletePostSubscriptionVariables = {
-	filter?: ModelSubscriptionPostFilterInput | null
-}
-
-export type OnDeletePostSubscription = {
-	onDeletePost?: {
-		__typename: "Post"
-		id: string
-		title: string
-		blog?: {
-			__typename: "Blog"
-			id: string
-			name: string
-			posts?: {
-				__typename: "ModelPostConnection"
-				nextToken?: string | null
-			} | null
-			createdAt: string
-			updatedAt: string
-		} | null
-		comments?: {
-			__typename: "ModelCommentConnection"
-			items: Array<{
-				__typename: "Comment"
-				id: string
-				content: string
-				createdAt: string
-				updatedAt: string
-				postCommentsId?: string | null
-			} | null>
-			nextToken?: string | null
-		} | null
-		createdAt: string
-		updatedAt: string
-		blogPostsId?: string | null
-	} | null
-}
-
-export type OnCreateCommentSubscriptionVariables = {
-	filter?: ModelSubscriptionCommentFilterInput | null
-}
-
-export type OnCreateCommentSubscription = {
-	onCreateComment?: {
-		__typename: "Comment"
-		id: string
-		post?: {
-			__typename: "Post"
-			id: string
-			title: string
-			blog?: {
-				__typename: "Blog"
-				id: string
+				email: string
 				name: string
-				createdAt: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
 				updatedAt: string
-			} | null
-			comments?: {
-				__typename: "ModelCommentConnection"
-				nextToken?: string | null
-			} | null
-			createdAt: string
+				createdAt: string
+			}
+			gameRoundID: string
+			gameRound: {
+				__typename: "GameRound"
+				id: string
+				index: number
+				question: string
+				correctAnswer: string
+				isComplete: boolean
+				gameSessionID: string
+				updatedAt: string
+				createdAt: string
+			}
 			updatedAt: string
-			blogPostsId?: string | null
-		} | null
-		content: string
-		createdAt: string
-		updatedAt: string
-		postCommentsId?: string | null
+			createdAt: string
+		} | null>
+		nextToken?: string | null
 	} | null
 }
 
-export type OnUpdateCommentSubscriptionVariables = {
-	filter?: ModelSubscriptionCommentFilterInput | null
+export type GetGameSessionByLobbyIDQueryVariables = {
+	lobbyID: string
+	sortDirection?: ModelSortDirection | null
+	filter?: ModelGameSessionFilterInput | null
+	limit?: number | null
+	nextToken?: string | null
 }
 
-export type OnUpdateCommentSubscription = {
-	onUpdateComment?: {
-		__typename: "Comment"
-		id: string
-		post?: {
-			__typename: "Post"
+export type GetGameSessionByLobbyIDQuery = {
+	getGameSessionByLobbyID?: {
+		__typename: "ModelGameSessionConnection"
+		items: Array<{
+			__typename: "GameSession"
 			id: string
-			title: string
-			blog?: {
-				__typename: "Blog"
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
 				id: string
-				name: string
-				createdAt: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
 				updatedAt: string
-			} | null
-			comments?: {
-				__typename: "ModelCommentConnection"
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
 				nextToken?: string | null
 			} | null
-			createdAt: string
 			updatedAt: string
-			blogPostsId?: string | null
-		} | null
-		content: string
-		createdAt: string
-		updatedAt: string
-		postCommentsId?: string | null
+			createdAt: string
+		} | null>
+		nextToken?: string | null
 	} | null
 }
 
-export type OnDeleteCommentSubscriptionVariables = {
-	filter?: ModelSubscriptionCommentFilterInput | null
+export type GetLobbyByCodeQueryVariables = {
+	code: string
+	sortDirection?: ModelSortDirection | null
+	filter?: ModelLobbyFilterInput | null
+	limit?: number | null
+	nextToken?: string | null
 }
 
-export type OnDeleteCommentSubscription = {
-	onDeleteComment?: {
-		__typename: "Comment"
-		id: string
-		post?: {
-			__typename: "Post"
+export type GetLobbyByCodeQuery = {
+	getLobbyByCode?: {
+		__typename: "ModelLobbyConnection"
+		items: Array<{
+			__typename: "Lobby"
 			id: string
-			title: string
-			blog?: {
-				__typename: "Blog"
-				id: string
-				name: string
-				createdAt: string
-				updatedAt: string
-			} | null
-			comments?: {
-				__typename: "ModelCommentConnection"
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
 				nextToken?: string | null
 			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		} | null>
+		nextToken?: string | null
+	} | null
+}
+
+export type GetLobbyByCreatorIDQueryVariables = {
+	creatorID: string
+	sortDirection?: ModelSortDirection | null
+	filter?: ModelLobbyFilterInput | null
+	limit?: number | null
+	nextToken?: string | null
+}
+
+export type GetLobbyByCreatorIDQuery = {
+	getLobbyByCreatorID?: {
+		__typename: "ModelLobbyConnection"
+		items: Array<{
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		} | null>
+		nextToken?: string | null
+	} | null
+}
+
+export type GetLobbyByGameSessionIDQueryVariables = {
+	gameSessionID: string
+	sortDirection?: ModelSortDirection | null
+	filter?: ModelLobbyFilterInput | null
+	limit?: number | null
+	nextToken?: string | null
+}
+
+export type GetLobbyByGameSessionIDQuery = {
+	getLobbyByGameSessionID?: {
+		__typename: "ModelLobbyConnection"
+		items: Array<{
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		} | null>
+		nextToken?: string | null
+	} | null
+}
+
+export type GetUserByEmailQueryVariables = {
+	email: string
+	sortDirection?: ModelSortDirection | null
+	filter?: ModelUserFilterInput | null
+	limit?: number | null
+	nextToken?: string | null
+}
+
+export type GetUserByEmailQuery = {
+	getUserByEmail?: {
+		__typename: "ModelUserConnection"
+		items: Array<{
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		} | null>
+		nextToken?: string | null
+	} | null
+}
+
+export type LobbiesJoinedsByLobbyIdQueryVariables = {
+	lobbyId: string
+	sortDirection?: ModelSortDirection | null
+	filter?: ModelLobbiesJoinedFilterInput | null
+	limit?: number | null
+	nextToken?: string | null
+}
+
+export type LobbiesJoinedsByLobbyIdQuery = {
+	lobbiesJoinedsByLobbyId?: {
+		__typename: "ModelLobbiesJoinedConnection"
+		items: Array<{
+			__typename: "LobbiesJoined"
+			id: string
+			lobbyId: string
+			userId: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			user: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
 			createdAt: string
 			updatedAt: string
-			blogPostsId?: string | null
+		} | null>
+		nextToken?: string | null
+	} | null
+}
+
+export type LobbiesJoinedsByUserIdQueryVariables = {
+	userId: string
+	sortDirection?: ModelSortDirection | null
+	filter?: ModelLobbiesJoinedFilterInput | null
+	limit?: number | null
+	nextToken?: string | null
+}
+
+export type LobbiesJoinedsByUserIdQuery = {
+	lobbiesJoinedsByUserId?: {
+		__typename: "ModelLobbiesJoinedConnection"
+		items: Array<{
+			__typename: "LobbiesJoined"
+			id: string
+			lobbyId: string
+			userId: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			user: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			createdAt: string
+			updatedAt: string
+		} | null>
+		nextToken?: string | null
+	} | null
+}
+
+export type OnCreateGameRoundSubscriptionVariables = {
+	filter?: ModelSubscriptionGameRoundFilterInput | null
+}
+
+export type OnCreateGameRoundSubscription = {
+	onCreateGameRound?: {
+		__typename: "GameRound"
+		id: string
+		index: number
+		question: string
+		correctAnswer: string
+		isComplete: boolean
+		submittedAnswers?: {
+			__typename: "ModelSubmittedAnswerConnection"
+			items: Array<{
+				__typename: "SubmittedAnswer"
+				id: string
+				answer: string
+				isCorrect?: boolean | null
+				userID: string
+				gameRoundID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
 		} | null
-		content: string
+		gameSessionID: string
+		gameSession: {
+			__typename: "GameSession"
+			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnUpdateGameRoundSubscriptionVariables = {
+	filter?: ModelSubscriptionGameRoundFilterInput | null
+}
+
+export type OnUpdateGameRoundSubscription = {
+	onUpdateGameRound?: {
+		__typename: "GameRound"
+		id: string
+		index: number
+		question: string
+		correctAnswer: string
+		isComplete: boolean
+		submittedAnswers?: {
+			__typename: "ModelSubmittedAnswerConnection"
+			items: Array<{
+				__typename: "SubmittedAnswer"
+				id: string
+				answer: string
+				isCorrect?: boolean | null
+				userID: string
+				gameRoundID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		gameSessionID: string
+		gameSession: {
+			__typename: "GameSession"
+			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnDeleteGameRoundSubscriptionVariables = {
+	filter?: ModelSubscriptionGameRoundFilterInput | null
+}
+
+export type OnDeleteGameRoundSubscription = {
+	onDeleteGameRound?: {
+		__typename: "GameRound"
+		id: string
+		index: number
+		question: string
+		correctAnswer: string
+		isComplete: boolean
+		submittedAnswers?: {
+			__typename: "ModelSubmittedAnswerConnection"
+			items: Array<{
+				__typename: "SubmittedAnswer"
+				id: string
+				answer: string
+				isCorrect?: boolean | null
+				userID: string
+				gameRoundID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		gameSessionID: string
+		gameSession: {
+			__typename: "GameSession"
+			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnCreateSubmittedAnswerSubscriptionVariables = {
+	filter?: ModelSubscriptionSubmittedAnswerFilterInput | null
+}
+
+export type OnCreateSubmittedAnswerSubscription = {
+	onCreateSubmittedAnswer?: {
+		__typename: "SubmittedAnswer"
+		id: string
+		answer: string
+		isCorrect?: boolean | null
+		userID: string
+		user: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		gameRoundID: string
+		gameRound: {
+			__typename: "GameRound"
+			id: string
+			index: number
+			question: string
+			correctAnswer: string
+			isComplete: boolean
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			gameSessionID: string
+			gameSession: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			}
+			updatedAt: string
+			createdAt: string
+		}
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnUpdateSubmittedAnswerSubscriptionVariables = {
+	filter?: ModelSubscriptionSubmittedAnswerFilterInput | null
+}
+
+export type OnUpdateSubmittedAnswerSubscription = {
+	onUpdateSubmittedAnswer?: {
+		__typename: "SubmittedAnswer"
+		id: string
+		answer: string
+		isCorrect?: boolean | null
+		userID: string
+		user: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		gameRoundID: string
+		gameRound: {
+			__typename: "GameRound"
+			id: string
+			index: number
+			question: string
+			correctAnswer: string
+			isComplete: boolean
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			gameSessionID: string
+			gameSession: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			}
+			updatedAt: string
+			createdAt: string
+		}
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnDeleteSubmittedAnswerSubscriptionVariables = {
+	filter?: ModelSubscriptionSubmittedAnswerFilterInput | null
+}
+
+export type OnDeleteSubmittedAnswerSubscription = {
+	onDeleteSubmittedAnswer?: {
+		__typename: "SubmittedAnswer"
+		id: string
+		answer: string
+		isCorrect?: boolean | null
+		userID: string
+		user: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		gameRoundID: string
+		gameRound: {
+			__typename: "GameRound"
+			id: string
+			index: number
+			question: string
+			correctAnswer: string
+			isComplete: boolean
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			gameSessionID: string
+			gameSession: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			}
+			updatedAt: string
+			createdAt: string
+		}
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnCreateGameSessionSubscriptionVariables = {
+	filter?: ModelSubscriptionGameSessionFilterInput | null
+}
+
+export type OnCreateGameSessionSubscription = {
+	onCreateGameSession?: {
+		__typename: "GameSession"
+		id: string
+		lobbyID: string
+		lobby: {
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		rounds?: {
+			__typename: "ModelGameRoundConnection"
+			items: Array<{
+				__typename: "GameRound"
+				id: string
+				index: number
+				question: string
+				correctAnswer: string
+				isComplete: boolean
+				gameSessionID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnUpdateGameSessionSubscriptionVariables = {
+	filter?: ModelSubscriptionGameSessionFilterInput | null
+}
+
+export type OnUpdateGameSessionSubscription = {
+	onUpdateGameSession?: {
+		__typename: "GameSession"
+		id: string
+		lobbyID: string
+		lobby: {
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		rounds?: {
+			__typename: "ModelGameRoundConnection"
+			items: Array<{
+				__typename: "GameRound"
+				id: string
+				index: number
+				question: string
+				correctAnswer: string
+				isComplete: boolean
+				gameSessionID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnDeleteGameSessionSubscriptionVariables = {
+	filter?: ModelSubscriptionGameSessionFilterInput | null
+}
+
+export type OnDeleteGameSessionSubscription = {
+	onDeleteGameSession?: {
+		__typename: "GameSession"
+		id: string
+		lobbyID: string
+		lobby: {
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		rounds?: {
+			__typename: "ModelGameRoundConnection"
+			items: Array<{
+				__typename: "GameRound"
+				id: string
+				index: number
+				question: string
+				correctAnswer: string
+				isComplete: boolean
+				gameSessionID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnCreateLobbySubscriptionVariables = {
+	filter?: ModelSubscriptionLobbyFilterInput | null
+}
+
+export type OnCreateLobbySubscription = {
+	onCreateLobby?: {
+		__typename: "Lobby"
+		id: string
+		code: string
+		isActive: boolean
+		participants?: {
+			__typename: "ModelLobbiesJoinedConnection"
+			items: Array<{
+				__typename: "LobbiesJoined"
+				id: string
+				lobbyId: string
+				userId: string
+				createdAt: string
+				updatedAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		creatorID: string
+		creator: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		gameSessionID?: string | null
+		gameSession?: {
+			__typename: "GameSession"
+			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnUpdateLobbySubscriptionVariables = {
+	filter?: ModelSubscriptionLobbyFilterInput | null
+}
+
+export type OnUpdateLobbySubscription = {
+	onUpdateLobby?: {
+		__typename: "Lobby"
+		id: string
+		code: string
+		isActive: boolean
+		participants?: {
+			__typename: "ModelLobbiesJoinedConnection"
+			items: Array<{
+				__typename: "LobbiesJoined"
+				id: string
+				lobbyId: string
+				userId: string
+				createdAt: string
+				updatedAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		creatorID: string
+		creator: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		gameSessionID?: string | null
+		gameSession?: {
+			__typename: "GameSession"
+			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnDeleteLobbySubscriptionVariables = {
+	filter?: ModelSubscriptionLobbyFilterInput | null
+}
+
+export type OnDeleteLobbySubscription = {
+	onDeleteLobby?: {
+		__typename: "Lobby"
+		id: string
+		code: string
+		isActive: boolean
+		participants?: {
+			__typename: "ModelLobbiesJoinedConnection"
+			items: Array<{
+				__typename: "LobbiesJoined"
+				id: string
+				lobbyId: string
+				userId: string
+				createdAt: string
+				updatedAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		creatorID: string
+		creator: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		gameSessionID?: string | null
+		gameSession?: {
+			__typename: "GameSession"
+			id: string
+			lobbyID: string
+			lobby: {
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			}
+			rounds?: {
+				__typename: "ModelGameRoundConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnCreateUserSubscriptionVariables = {
+	filter?: ModelSubscriptionUserFilterInput | null
+}
+
+export type OnCreateUserSubscription = {
+	onCreateUser?: {
+		__typename: "User"
+		id: string
+		email: string
+		name: string
+		selfie?: string | null
+		status: UserStatus
+		type: UserType
+		createdLobbies?: {
+			__typename: "ModelLobbyConnection"
+			items: Array<{
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		joinedLobbies?: {
+			__typename: "ModelLobbiesJoinedConnection"
+			items: Array<{
+				__typename: "LobbiesJoined"
+				id: string
+				lobbyId: string
+				userId: string
+				createdAt: string
+				updatedAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		submittedAnswers?: {
+			__typename: "ModelSubmittedAnswerConnection"
+			items: Array<{
+				__typename: "SubmittedAnswer"
+				id: string
+				answer: string
+				isCorrect?: boolean | null
+				userID: string
+				gameRoundID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnUpdateUserSubscriptionVariables = {
+	filter?: ModelSubscriptionUserFilterInput | null
+}
+
+export type OnUpdateUserSubscription = {
+	onUpdateUser?: {
+		__typename: "User"
+		id: string
+		email: string
+		name: string
+		selfie?: string | null
+		status: UserStatus
+		type: UserType
+		createdLobbies?: {
+			__typename: "ModelLobbyConnection"
+			items: Array<{
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		joinedLobbies?: {
+			__typename: "ModelLobbiesJoinedConnection"
+			items: Array<{
+				__typename: "LobbiesJoined"
+				id: string
+				lobbyId: string
+				userId: string
+				createdAt: string
+				updatedAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		submittedAnswers?: {
+			__typename: "ModelSubmittedAnswerConnection"
+			items: Array<{
+				__typename: "SubmittedAnswer"
+				id: string
+				answer: string
+				isCorrect?: boolean | null
+				userID: string
+				gameRoundID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnDeleteUserSubscriptionVariables = {
+	filter?: ModelSubscriptionUserFilterInput | null
+}
+
+export type OnDeleteUserSubscription = {
+	onDeleteUser?: {
+		__typename: "User"
+		id: string
+		email: string
+		name: string
+		selfie?: string | null
+		status: UserStatus
+		type: UserType
+		createdLobbies?: {
+			__typename: "ModelLobbyConnection"
+			items: Array<{
+				__typename: "Lobby"
+				id: string
+				code: string
+				isActive: boolean
+				creatorID: string
+				gameSessionID?: string | null
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		joinedLobbies?: {
+			__typename: "ModelLobbiesJoinedConnection"
+			items: Array<{
+				__typename: "LobbiesJoined"
+				id: string
+				lobbyId: string
+				userId: string
+				createdAt: string
+				updatedAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		submittedAnswers?: {
+			__typename: "ModelSubmittedAnswerConnection"
+			items: Array<{
+				__typename: "SubmittedAnswer"
+				id: string
+				answer: string
+				isCorrect?: boolean | null
+				userID: string
+				gameRoundID: string
+				updatedAt: string
+				createdAt: string
+			} | null>
+			nextToken?: string | null
+		} | null
+		updatedAt: string
+		createdAt: string
+	} | null
+}
+
+export type OnCreateLobbiesJoinedSubscriptionVariables = {
+	filter?: ModelSubscriptionLobbiesJoinedFilterInput | null
+}
+
+export type OnCreateLobbiesJoinedSubscription = {
+	onCreateLobbiesJoined?: {
+		__typename: "LobbiesJoined"
+		id: string
+		lobbyId: string
+		userId: string
+		lobby: {
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		user: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
 		createdAt: string
 		updatedAt: string
-		postCommentsId?: string | null
+	} | null
+}
+
+export type OnUpdateLobbiesJoinedSubscriptionVariables = {
+	filter?: ModelSubscriptionLobbiesJoinedFilterInput | null
+}
+
+export type OnUpdateLobbiesJoinedSubscription = {
+	onUpdateLobbiesJoined?: {
+		__typename: "LobbiesJoined"
+		id: string
+		lobbyId: string
+		userId: string
+		lobby: {
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		user: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		createdAt: string
+		updatedAt: string
+	} | null
+}
+
+export type OnDeleteLobbiesJoinedSubscriptionVariables = {
+	filter?: ModelSubscriptionLobbiesJoinedFilterInput | null
+}
+
+export type OnDeleteLobbiesJoinedSubscription = {
+	onDeleteLobbiesJoined?: {
+		__typename: "LobbiesJoined"
+		id: string
+		lobbyId: string
+		userId: string
+		lobby: {
+			__typename: "Lobby"
+			id: string
+			code: string
+			isActive: boolean
+			participants?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			creatorID: string
+			creator: {
+				__typename: "User"
+				id: string
+				email: string
+				name: string
+				selfie?: string | null
+				status: UserStatus
+				type: UserType
+				updatedAt: string
+				createdAt: string
+			}
+			gameSessionID?: string | null
+			gameSession?: {
+				__typename: "GameSession"
+				id: string
+				lobbyID: string
+				updatedAt: string
+				createdAt: string
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		user: {
+			__typename: "User"
+			id: string
+			email: string
+			name: string
+			selfie?: string | null
+			status: UserStatus
+			type: UserType
+			createdLobbies?: {
+				__typename: "ModelLobbyConnection"
+				nextToken?: string | null
+			} | null
+			joinedLobbies?: {
+				__typename: "ModelLobbiesJoinedConnection"
+				nextToken?: string | null
+			} | null
+			submittedAnswers?: {
+				__typename: "ModelSubmittedAnswerConnection"
+				nextToken?: string | null
+			} | null
+			updatedAt: string
+			createdAt: string
+		}
+		createdAt: string
+		updatedAt: string
 	} | null
 }

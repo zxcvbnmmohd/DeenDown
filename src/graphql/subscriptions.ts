@@ -8,297 +8,1152 @@ type GeneratedSubscription<InputType, OutputType> = string & {
 	__generatedSubscriptionOutput: OutputType
 }
 
-export const onCreateBlog =
-	/* GraphQL */ `subscription OnCreateBlog($filter: ModelSubscriptionBlogFilterInput) {
-  onCreateBlog(filter: $filter) {
+export const onCreateGameRound =
+	/* GraphQL */ `subscription OnCreateGameRound($filter: ModelSubscriptionGameRoundFilterInput) {
+  onCreateGameRound(filter: $filter) {
     id
-    name
-    posts {
+    index
+    question
+    correctAnswer
+    isComplete
+    submittedAnswers {
       items {
         id
-        title
-        createdAt
+        answer
+        isCorrect
+        userID
+        gameRoundID
         updatedAt
-        blogPostsId
+        createdAt
         __typename
       }
       nextToken
       __typename
     }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-` as GeneratedSubscription<
-		APITypes.OnCreateBlogSubscriptionVariables,
-		APITypes.OnCreateBlogSubscription
-	>
-export const onUpdateBlog =
-	/* GraphQL */ `subscription OnUpdateBlog($filter: ModelSubscriptionBlogFilterInput) {
-  onUpdateBlog(filter: $filter) {
-    id
-    name
-    posts {
-      items {
-        id
-        title
-        createdAt
-        updatedAt
-        blogPostsId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-` as GeneratedSubscription<
-		APITypes.OnUpdateBlogSubscriptionVariables,
-		APITypes.OnUpdateBlogSubscription
-	>
-export const onDeleteBlog =
-	/* GraphQL */ `subscription OnDeleteBlog($filter: ModelSubscriptionBlogFilterInput) {
-  onDeleteBlog(filter: $filter) {
-    id
-    name
-    posts {
-      items {
-        id
-        title
-        createdAt
-        updatedAt
-        blogPostsId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-` as GeneratedSubscription<
-		APITypes.OnDeleteBlogSubscriptionVariables,
-		APITypes.OnDeleteBlogSubscription
-	>
-export const onCreatePost =
-	/* GraphQL */ `subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
-  onCreatePost(filter: $filter) {
-    id
-    title
-    blog {
+    gameSessionID
+    gameSession {
       id
+      lobbyID
+      lobby {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      rounds {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+		APITypes.OnCreateGameRoundSubscriptionVariables,
+		APITypes.OnCreateGameRoundSubscription
+	>
+export const onUpdateGameRound =
+	/* GraphQL */ `subscription OnUpdateGameRound($filter: ModelSubscriptionGameRoundFilterInput) {
+  onUpdateGameRound(filter: $filter) {
+    id
+    index
+    question
+    correctAnswer
+    isComplete
+    submittedAnswers {
+      items {
+        id
+        answer
+        isCorrect
+        userID
+        gameRoundID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    gameSessionID
+    gameSession {
+      id
+      lobbyID
+      lobby {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      rounds {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+		APITypes.OnUpdateGameRoundSubscriptionVariables,
+		APITypes.OnUpdateGameRoundSubscription
+	>
+export const onDeleteGameRound =
+	/* GraphQL */ `subscription OnDeleteGameRound($filter: ModelSubscriptionGameRoundFilterInput) {
+  onDeleteGameRound(filter: $filter) {
+    id
+    index
+    question
+    correctAnswer
+    isComplete
+    submittedAnswers {
+      items {
+        id
+        answer
+        isCorrect
+        userID
+        gameRoundID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    gameSessionID
+    gameSession {
+      id
+      lobbyID
+      lobby {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      rounds {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+		APITypes.OnDeleteGameRoundSubscriptionVariables,
+		APITypes.OnDeleteGameRoundSubscription
+	>
+export const onCreateSubmittedAnswer =
+	/* GraphQL */ `subscription OnCreateSubmittedAnswer(
+  $filter: ModelSubscriptionSubmittedAnswerFilterInput
+) {
+  onCreateSubmittedAnswer(filter: $filter) {
+    id
+    answer
+    isCorrect
+    userID
+    user {
+      id
+      email
       name
-      posts {
+      selfie
+      status
+      type
+      createdLobbies {
         nextToken
         __typename
       }
-      createdAt
-      updatedAt
-      __typename
-    }
-    comments {
-      items {
-        id
-        content
-        createdAt
-        updatedAt
-        postCommentsId
+      joinedLobbies {
+        nextToken
         __typename
       }
-      nextToken
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
       __typename
     }
-    createdAt
+    gameRoundID
+    gameRound {
+      id
+      index
+      question
+      correctAnswer
+      isComplete
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
     updatedAt
-    blogPostsId
+    createdAt
     __typename
   }
 }
 ` as GeneratedSubscription<
-		APITypes.OnCreatePostSubscriptionVariables,
-		APITypes.OnCreatePostSubscription
+		APITypes.OnCreateSubmittedAnswerSubscriptionVariables,
+		APITypes.OnCreateSubmittedAnswerSubscription
 	>
-export const onUpdatePost =
-	/* GraphQL */ `subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
-  onUpdatePost(filter: $filter) {
+export const onUpdateSubmittedAnswer =
+	/* GraphQL */ `subscription OnUpdateSubmittedAnswer(
+  $filter: ModelSubscriptionSubmittedAnswerFilterInput
+) {
+  onUpdateSubmittedAnswer(filter: $filter) {
     id
-    title
-    blog {
+    answer
+    isCorrect
+    userID
+    user {
       id
+      email
       name
-      posts {
+      selfie
+      status
+      type
+      createdLobbies {
         nextToken
         __typename
       }
-      createdAt
-      updatedAt
-      __typename
-    }
-    comments {
-      items {
-        id
-        content
-        createdAt
-        updatedAt
-        postCommentsId
+      joinedLobbies {
+        nextToken
         __typename
       }
-      nextToken
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
       __typename
     }
-    createdAt
+    gameRoundID
+    gameRound {
+      id
+      index
+      question
+      correctAnswer
+      isComplete
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
     updatedAt
-    blogPostsId
+    createdAt
     __typename
   }
 }
 ` as GeneratedSubscription<
-		APITypes.OnUpdatePostSubscriptionVariables,
-		APITypes.OnUpdatePostSubscription
+		APITypes.OnUpdateSubmittedAnswerSubscriptionVariables,
+		APITypes.OnUpdateSubmittedAnswerSubscription
 	>
-export const onDeletePost =
-	/* GraphQL */ `subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
-  onDeletePost(filter: $filter) {
+export const onDeleteSubmittedAnswer =
+	/* GraphQL */ `subscription OnDeleteSubmittedAnswer(
+  $filter: ModelSubscriptionSubmittedAnswerFilterInput
+) {
+  onDeleteSubmittedAnswer(filter: $filter) {
     id
-    title
-    blog {
+    answer
+    isCorrect
+    userID
+    user {
       id
+      email
       name
-      posts {
+      selfie
+      status
+      type
+      createdLobbies {
         nextToken
         __typename
       }
-      createdAt
+      joinedLobbies {
+        nextToken
+        __typename
+      }
+      submittedAnswers {
+        nextToken
+        __typename
+      }
       updatedAt
+      createdAt
       __typename
     }
-    comments {
+    gameRoundID
+    gameRound {
+      id
+      index
+      question
+      correctAnswer
+      isComplete
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+		APITypes.OnDeleteSubmittedAnswerSubscriptionVariables,
+		APITypes.OnDeleteSubmittedAnswerSubscription
+	>
+export const onCreateGameSession =
+	/* GraphQL */ `subscription OnCreateGameSession(
+  $filter: ModelSubscriptionGameSessionFilterInput
+) {
+  onCreateGameSession(filter: $filter) {
+    id
+    lobbyID
+    lobby {
+      id
+      code
+      isActive
+      participants {
+        nextToken
+        __typename
+      }
+      creatorID
+      creator {
+        id
+        email
+        name
+        selfie
+        status
+        type
+        updatedAt
+        createdAt
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    rounds {
       items {
         id
-        content
-        createdAt
+        index
+        question
+        correctAnswer
+        isComplete
+        gameSessionID
         updatedAt
-        postCommentsId
+        createdAt
         __typename
       }
       nextToken
       __typename
     }
-    createdAt
     updatedAt
-    blogPostsId
+    createdAt
     __typename
   }
 }
 ` as GeneratedSubscription<
-		APITypes.OnDeletePostSubscriptionVariables,
-		APITypes.OnDeletePostSubscription
+		APITypes.OnCreateGameSessionSubscriptionVariables,
+		APITypes.OnCreateGameSessionSubscription
 	>
-export const onCreateComment =
-	/* GraphQL */ `subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
-  onCreateComment(filter: $filter) {
+export const onUpdateGameSession =
+	/* GraphQL */ `subscription OnUpdateGameSession(
+  $filter: ModelSubscriptionGameSessionFilterInput
+) {
+  onUpdateGameSession(filter: $filter) {
     id
-    post {
+    lobbyID
+    lobby {
       id
-      title
-      blog {
+      code
+      isActive
+      participants {
+        nextToken
+        __typename
+      }
+      creatorID
+      creator {
         id
+        email
         name
+        selfie
+        status
+        type
+        updatedAt
+        createdAt
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    rounds {
+      items {
+        id
+        index
+        question
+        correctAnswer
+        isComplete
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+		APITypes.OnUpdateGameSessionSubscriptionVariables,
+		APITypes.OnUpdateGameSessionSubscription
+	>
+export const onDeleteGameSession =
+	/* GraphQL */ `subscription OnDeleteGameSession(
+  $filter: ModelSubscriptionGameSessionFilterInput
+) {
+  onDeleteGameSession(filter: $filter) {
+    id
+    lobbyID
+    lobby {
+      id
+      code
+      isActive
+      participants {
+        nextToken
+        __typename
+      }
+      creatorID
+      creator {
+        id
+        email
+        name
+        selfie
+        status
+        type
+        updatedAt
+        createdAt
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    rounds {
+      items {
+        id
+        index
+        question
+        correctAnswer
+        isComplete
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+		APITypes.OnDeleteGameSessionSubscriptionVariables,
+		APITypes.OnDeleteGameSessionSubscription
+	>
+export const onCreateLobby =
+	/* GraphQL */ `subscription OnCreateLobby($filter: ModelSubscriptionLobbyFilterInput) {
+  onCreateLobby(filter: $filter) {
+    id
+    code
+    isActive
+    participants {
+      items {
+        id
+        lobbyId
+        userId
         createdAt
         updatedAt
         __typename
       }
-      comments {
+      nextToken
+      __typename
+    }
+    creatorID
+    creator {
+      id
+      email
+      name
+      selfie
+      status
+      type
+      createdLobbies {
         nextToken
         __typename
       }
-      createdAt
+      joinedLobbies {
+        nextToken
+        __typename
+      }
+      submittedAnswers {
+        nextToken
+        __typename
+      }
       updatedAt
-      blogPostsId
+      createdAt
       __typename
     }
-    content
-    createdAt
+    gameSessionID
+    gameSession {
+      id
+      lobbyID
+      lobby {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      rounds {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
     updatedAt
-    postCommentsId
+    createdAt
     __typename
   }
 }
 ` as GeneratedSubscription<
-		APITypes.OnCreateCommentSubscriptionVariables,
-		APITypes.OnCreateCommentSubscription
+		APITypes.OnCreateLobbySubscriptionVariables,
+		APITypes.OnCreateLobbySubscription
 	>
-export const onUpdateComment =
-	/* GraphQL */ `subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
-  onUpdateComment(filter: $filter) {
+export const onUpdateLobby =
+	/* GraphQL */ `subscription OnUpdateLobby($filter: ModelSubscriptionLobbyFilterInput) {
+  onUpdateLobby(filter: $filter) {
     id
-    post {
-      id
-      title
-      blog {
+    code
+    isActive
+    participants {
+      items {
         id
-        name
+        lobbyId
+        userId
         createdAt
         updatedAt
         __typename
       }
-      comments {
+      nextToken
+      __typename
+    }
+    creatorID
+    creator {
+      id
+      email
+      name
+      selfie
+      status
+      type
+      createdLobbies {
         nextToken
         __typename
       }
-      createdAt
+      joinedLobbies {
+        nextToken
+        __typename
+      }
+      submittedAnswers {
+        nextToken
+        __typename
+      }
       updatedAt
-      blogPostsId
+      createdAt
       __typename
     }
-    content
-    createdAt
+    gameSessionID
+    gameSession {
+      id
+      lobbyID
+      lobby {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      rounds {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
     updatedAt
-    postCommentsId
+    createdAt
     __typename
   }
 }
 ` as GeneratedSubscription<
-		APITypes.OnUpdateCommentSubscriptionVariables,
-		APITypes.OnUpdateCommentSubscription
+		APITypes.OnUpdateLobbySubscriptionVariables,
+		APITypes.OnUpdateLobbySubscription
 	>
-export const onDeleteComment =
-	/* GraphQL */ `subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
-  onDeleteComment(filter: $filter) {
+export const onDeleteLobby =
+	/* GraphQL */ `subscription OnDeleteLobby($filter: ModelSubscriptionLobbyFilterInput) {
+  onDeleteLobby(filter: $filter) {
     id
-    post {
-      id
-      title
-      blog {
+    code
+    isActive
+    participants {
+      items {
         id
-        name
+        lobbyId
+        userId
         createdAt
         updatedAt
         __typename
       }
-      comments {
+      nextToken
+      __typename
+    }
+    creatorID
+    creator {
+      id
+      email
+      name
+      selfie
+      status
+      type
+      createdLobbies {
         nextToken
         __typename
       }
-      createdAt
+      joinedLobbies {
+        nextToken
+        __typename
+      }
+      submittedAnswers {
+        nextToken
+        __typename
+      }
       updatedAt
-      blogPostsId
+      createdAt
       __typename
     }
-    content
-    createdAt
+    gameSessionID
+    gameSession {
+      id
+      lobbyID
+      lobby {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      rounds {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
     updatedAt
-    postCommentsId
+    createdAt
     __typename
   }
 }
 ` as GeneratedSubscription<
-		APITypes.OnDeleteCommentSubscriptionVariables,
-		APITypes.OnDeleteCommentSubscription
+		APITypes.OnDeleteLobbySubscriptionVariables,
+		APITypes.OnDeleteLobbySubscription
+	>
+export const onCreateUser =
+	/* GraphQL */ `subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
+  onCreateUser(filter: $filter) {
+    id
+    email
+    name
+    selfie
+    status
+    type
+    createdLobbies {
+      items {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    joinedLobbies {
+      items {
+        id
+        lobbyId
+        userId
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    submittedAnswers {
+      items {
+        id
+        answer
+        isCorrect
+        userID
+        gameRoundID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+		APITypes.OnCreateUserSubscriptionVariables,
+		APITypes.OnCreateUserSubscription
+	>
+export const onUpdateUser =
+	/* GraphQL */ `subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
+  onUpdateUser(filter: $filter) {
+    id
+    email
+    name
+    selfie
+    status
+    type
+    createdLobbies {
+      items {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    joinedLobbies {
+      items {
+        id
+        lobbyId
+        userId
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    submittedAnswers {
+      items {
+        id
+        answer
+        isCorrect
+        userID
+        gameRoundID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+		APITypes.OnUpdateUserSubscriptionVariables,
+		APITypes.OnUpdateUserSubscription
+	>
+export const onDeleteUser =
+	/* GraphQL */ `subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
+  onDeleteUser(filter: $filter) {
+    id
+    email
+    name
+    selfie
+    status
+    type
+    createdLobbies {
+      items {
+        id
+        code
+        isActive
+        creatorID
+        gameSessionID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    joinedLobbies {
+      items {
+        id
+        lobbyId
+        userId
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    submittedAnswers {
+      items {
+        id
+        answer
+        isCorrect
+        userID
+        gameRoundID
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+		APITypes.OnDeleteUserSubscriptionVariables,
+		APITypes.OnDeleteUserSubscription
+	>
+export const onCreateLobbiesJoined =
+	/* GraphQL */ `subscription OnCreateLobbiesJoined(
+  $filter: ModelSubscriptionLobbiesJoinedFilterInput
+) {
+  onCreateLobbiesJoined(filter: $filter) {
+    id
+    lobbyId
+    userId
+    lobby {
+      id
+      code
+      isActive
+      participants {
+        nextToken
+        __typename
+      }
+      creatorID
+      creator {
+        id
+        email
+        name
+        selfie
+        status
+        type
+        updatedAt
+        createdAt
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    user {
+      id
+      email
+      name
+      selfie
+      status
+      type
+      createdLobbies {
+        nextToken
+        __typename
+      }
+      joinedLobbies {
+        nextToken
+        __typename
+      }
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+		APITypes.OnCreateLobbiesJoinedSubscriptionVariables,
+		APITypes.OnCreateLobbiesJoinedSubscription
+	>
+export const onUpdateLobbiesJoined =
+	/* GraphQL */ `subscription OnUpdateLobbiesJoined(
+  $filter: ModelSubscriptionLobbiesJoinedFilterInput
+) {
+  onUpdateLobbiesJoined(filter: $filter) {
+    id
+    lobbyId
+    userId
+    lobby {
+      id
+      code
+      isActive
+      participants {
+        nextToken
+        __typename
+      }
+      creatorID
+      creator {
+        id
+        email
+        name
+        selfie
+        status
+        type
+        updatedAt
+        createdAt
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    user {
+      id
+      email
+      name
+      selfie
+      status
+      type
+      createdLobbies {
+        nextToken
+        __typename
+      }
+      joinedLobbies {
+        nextToken
+        __typename
+      }
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+		APITypes.OnUpdateLobbiesJoinedSubscriptionVariables,
+		APITypes.OnUpdateLobbiesJoinedSubscription
+	>
+export const onDeleteLobbiesJoined =
+	/* GraphQL */ `subscription OnDeleteLobbiesJoined(
+  $filter: ModelSubscriptionLobbiesJoinedFilterInput
+) {
+  onDeleteLobbiesJoined(filter: $filter) {
+    id
+    lobbyId
+    userId
+    lobby {
+      id
+      code
+      isActive
+      participants {
+        nextToken
+        __typename
+      }
+      creatorID
+      creator {
+        id
+        email
+        name
+        selfie
+        status
+        type
+        updatedAt
+        createdAt
+        __typename
+      }
+      gameSessionID
+      gameSession {
+        id
+        lobbyID
+        updatedAt
+        createdAt
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    user {
+      id
+      email
+      name
+      selfie
+      status
+      type
+      createdLobbies {
+        nextToken
+        __typename
+      }
+      joinedLobbies {
+        nextToken
+        __typename
+      }
+      submittedAnswers {
+        nextToken
+        __typename
+      }
+      updatedAt
+      createdAt
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+		APITypes.OnDeleteLobbiesJoinedSubscriptionVariables,
+		APITypes.OnDeleteLobbiesJoinedSubscription
 	>
