@@ -325,13 +325,13 @@ export type DeleteLobbyInput = {
 	id: string
 }
 
-export type CreateUserInput = {
-	id?: string | null
-	email: string
-	name: string
+export type UpdateUserInput = {
+	id: string
+	email?: string | null
+	name?: string | null
 	selfie?: string | null
-	status: UserStatus
-	type: UserType
+	status?: UserStatus | null
+	type?: UserType | null
 	updatedAt?: string | null
 	createdAt?: string | null
 }
@@ -357,21 +357,6 @@ export type ModelUserStatusInput = {
 export type ModelUserTypeInput = {
 	eq?: UserType | null
 	ne?: UserType | null
-}
-
-export type UpdateUserInput = {
-	id: string
-	email?: string | null
-	name?: string | null
-	selfie?: string | null
-	status?: UserStatus | null
-	type?: UserType | null
-	updatedAt?: string | null
-	createdAt?: string | null
-}
-
-export type DeleteUserInput = {
-	id: string
 }
 
 export type CreateLobbiesJoinedInput = {
@@ -1361,65 +1346,6 @@ export type DeleteLobbyMutation = {
 	} | null
 }
 
-export type CreateUserMutationVariables = {
-	input: CreateUserInput
-	condition?: ModelUserConditionInput | null
-}
-
-export type CreateUserMutation = {
-	createUser?: {
-		__typename: "User"
-		id: string
-		email: string
-		name: string
-		selfie?: string | null
-		status: UserStatus
-		type: UserType
-		createdLobbies?: {
-			__typename: "ModelLobbyConnection"
-			items: Array<{
-				__typename: "Lobby"
-				id: string
-				code: string
-				isActive: boolean
-				creatorID: string
-				gameSessionID?: string | null
-				updatedAt: string
-				createdAt: string
-			} | null>
-			nextToken?: string | null
-		} | null
-		joinedLobbies?: {
-			__typename: "ModelLobbiesJoinedConnection"
-			items: Array<{
-				__typename: "LobbiesJoined"
-				id: string
-				lobbyId: string
-				userId: string
-				createdAt: string
-				updatedAt: string
-			} | null>
-			nextToken?: string | null
-		} | null
-		submittedAnswers?: {
-			__typename: "ModelSubmittedAnswerConnection"
-			items: Array<{
-				__typename: "SubmittedAnswer"
-				id: string
-				answer: string
-				isCorrect?: boolean | null
-				userID: string
-				gameRoundID: string
-				updatedAt: string
-				createdAt: string
-			} | null>
-			nextToken?: string | null
-		} | null
-		updatedAt: string
-		createdAt: string
-	} | null
-}
-
 export type UpdateUserMutationVariables = {
 	input: UpdateUserInput
 	condition?: ModelUserConditionInput | null
@@ -1427,65 +1353,6 @@ export type UpdateUserMutationVariables = {
 
 export type UpdateUserMutation = {
 	updateUser?: {
-		__typename: "User"
-		id: string
-		email: string
-		name: string
-		selfie?: string | null
-		status: UserStatus
-		type: UserType
-		createdLobbies?: {
-			__typename: "ModelLobbyConnection"
-			items: Array<{
-				__typename: "Lobby"
-				id: string
-				code: string
-				isActive: boolean
-				creatorID: string
-				gameSessionID?: string | null
-				updatedAt: string
-				createdAt: string
-			} | null>
-			nextToken?: string | null
-		} | null
-		joinedLobbies?: {
-			__typename: "ModelLobbiesJoinedConnection"
-			items: Array<{
-				__typename: "LobbiesJoined"
-				id: string
-				lobbyId: string
-				userId: string
-				createdAt: string
-				updatedAt: string
-			} | null>
-			nextToken?: string | null
-		} | null
-		submittedAnswers?: {
-			__typename: "ModelSubmittedAnswerConnection"
-			items: Array<{
-				__typename: "SubmittedAnswer"
-				id: string
-				answer: string
-				isCorrect?: boolean | null
-				userID: string
-				gameRoundID: string
-				updatedAt: string
-				createdAt: string
-			} | null>
-			nextToken?: string | null
-		} | null
-		updatedAt: string
-		createdAt: string
-	} | null
-}
-
-export type DeleteUserMutationVariables = {
-	input: DeleteUserInput
-	condition?: ModelUserConditionInput | null
-}
-
-export type DeleteUserMutation = {
-	deleteUser?: {
 		__typename: "User"
 		id: string
 		email: string
@@ -3546,128 +3413,12 @@ export type OnDeleteLobbySubscription = {
 	} | null
 }
 
-export type OnCreateUserSubscriptionVariables = {
-	filter?: ModelSubscriptionUserFilterInput | null
-}
-
-export type OnCreateUserSubscription = {
-	onCreateUser?: {
-		__typename: "User"
-		id: string
-		email: string
-		name: string
-		selfie?: string | null
-		status: UserStatus
-		type: UserType
-		createdLobbies?: {
-			__typename: "ModelLobbyConnection"
-			items: Array<{
-				__typename: "Lobby"
-				id: string
-				code: string
-				isActive: boolean
-				creatorID: string
-				gameSessionID?: string | null
-				updatedAt: string
-				createdAt: string
-			} | null>
-			nextToken?: string | null
-		} | null
-		joinedLobbies?: {
-			__typename: "ModelLobbiesJoinedConnection"
-			items: Array<{
-				__typename: "LobbiesJoined"
-				id: string
-				lobbyId: string
-				userId: string
-				createdAt: string
-				updatedAt: string
-			} | null>
-			nextToken?: string | null
-		} | null
-		submittedAnswers?: {
-			__typename: "ModelSubmittedAnswerConnection"
-			items: Array<{
-				__typename: "SubmittedAnswer"
-				id: string
-				answer: string
-				isCorrect?: boolean | null
-				userID: string
-				gameRoundID: string
-				updatedAt: string
-				createdAt: string
-			} | null>
-			nextToken?: string | null
-		} | null
-		updatedAt: string
-		createdAt: string
-	} | null
-}
-
 export type OnUpdateUserSubscriptionVariables = {
 	filter?: ModelSubscriptionUserFilterInput | null
 }
 
 export type OnUpdateUserSubscription = {
 	onUpdateUser?: {
-		__typename: "User"
-		id: string
-		email: string
-		name: string
-		selfie?: string | null
-		status: UserStatus
-		type: UserType
-		createdLobbies?: {
-			__typename: "ModelLobbyConnection"
-			items: Array<{
-				__typename: "Lobby"
-				id: string
-				code: string
-				isActive: boolean
-				creatorID: string
-				gameSessionID?: string | null
-				updatedAt: string
-				createdAt: string
-			} | null>
-			nextToken?: string | null
-		} | null
-		joinedLobbies?: {
-			__typename: "ModelLobbiesJoinedConnection"
-			items: Array<{
-				__typename: "LobbiesJoined"
-				id: string
-				lobbyId: string
-				userId: string
-				createdAt: string
-				updatedAt: string
-			} | null>
-			nextToken?: string | null
-		} | null
-		submittedAnswers?: {
-			__typename: "ModelSubmittedAnswerConnection"
-			items: Array<{
-				__typename: "SubmittedAnswer"
-				id: string
-				answer: string
-				isCorrect?: boolean | null
-				userID: string
-				gameRoundID: string
-				updatedAt: string
-				createdAt: string
-			} | null>
-			nextToken?: string | null
-		} | null
-		updatedAt: string
-		createdAt: string
-	} | null
-}
-
-export type OnDeleteUserSubscriptionVariables = {
-	filter?: ModelSubscriptionUserFilterInput | null
-}
-
-export type OnDeleteUserSubscription = {
-	onDeleteUser?: {
 		__typename: "User"
 		id: string
 		email: string

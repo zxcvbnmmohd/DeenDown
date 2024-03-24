@@ -10,5 +10,19 @@
 	"triggerTemplate": "PostConfirmation.json.ejs",
 	"triggerEventPath": "PostConfirmation.event.json",
 	"roleName": "DeenDownAuthPostConfirmation",
-	"skipEdit": true
+	"skipEdit": true,
+	"permissions": {
+		"storage": {
+			"User:@model(appsync)": ["create"]
+		}
+	},
+	"lambdaLayers": [
+		{
+			"type": "ProjectLayer",
+			"resourceName": "deendownCommonLayerTs",
+			"env": "dev",
+			"version": "Always choose latest version",
+			"isLatestVersionSelected": true
+		}
+	]
 }
